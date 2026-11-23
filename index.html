@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="uploads/favicon-missao-193.png">
+<title>Missão 193</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="gfont" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root {
+  --primary: #11c1ca; --primary-2: #0d9488; --accent: #8b5cf6; --accent-2: #ec4899; --dark: #07091a;
+  --font: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ink: #0f172a; --text: #475569; --muted: #94a3b8; --line: #e2e8f0; --bg: #f8fafc;
+  --grad: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--accent-2) 100%);
+  --btn: linear-gradient(135deg, var(--primary), var(--primary-2));
+  --r: 16px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.narrow { max-width: 760px; }
+.center { text-align: center; }
+.center-x { justify-content: center; }
+section { padding: 88px 0; position: relative; }
+h1, h2, h3 { color: var(--ink); line-height: 1.15; letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.grid { display: grid; gap: 24px; }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Botões */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 10px; font-weight: 600; font-size: 15px; transition: transform .2s, box-shadow .2s, background .2s; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--btn); color: #fff; box-shadow: 0 8px 24px -8px var(--primary); }
+.btn-ghost { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.16); }
+.btn-ghost:hover { background: rgba(255,255,255,.12); }
+.btn-outline { border-color: var(--primary); color: var(--primary-2); background: #fff; margin-top: 40px; }
+.btn-outline:hover { background: var(--primary); color: #fff; }
+.btn-line { border-color: var(--primary); color: var(--primary); }
+.btn-violet { background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 65%, #000)); color: #fff; box-shadow: 0 10px 30px -10px var(--accent); }
+.btn-green { background: #22c55e; color: #fff; box-shadow: 0 10px 30px -10px #22c55e; }
+.btn-sm { padding: 9px 16px; font-size: 13px; border-radius: 999px; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+.badge { display: inline-block; padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--primary-2); background: color-mix(in srgb, var(--primary) 12%, #fff); border: 1px solid color-mix(in srgb, var(--primary) 25%, #fff); margin-bottom: 16px; }
+.sec-head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+.sec-head p { margin-top: 14px; font-size: 17px; }
+.on-dark h2 { color: #fff; }
+.on-dark p { color: #a5b0c8; }
+.on-dark .badge { background: color-mix(in srgb, var(--accent-2) 12%, transparent); color: #f9a8d4; border-color: color-mix(in srgb, var(--accent-2) 30%, transparent); text-transform: uppercase; letter-spacing: .08em; font-size: 12px; }
+
+/* Placeholder de imagem */
+.ph { display: grid; place-items: center; background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 30%, #1e1b4b), color-mix(in srgb, var(--accent) 45%, #1e1b4b)); color: rgba(255,255,255,.85); font-weight: 700; text-align: center; padding: 20px; }
+
+/* Header */
+.topbar { position: fixed; inset: 0 0 auto; z-index: 50; background: color-mix(in srgb, var(--dark) 92%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.06); transition: box-shadow .2s; }
+.topbar.scrolled { box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.bar { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+.logo { display: flex; align-items: center; flex-shrink: 0; }
+.logo-img { max-height: 42px; width: auto; }
+.logo-text { font-weight: 800; font-size: 20px; color: #fff; letter-spacing: -0.02em; }
+.nav { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: flex-end; }
+.nav-link { color: #cbd5e1; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 8px; }
+.nav-link:hover { color: #fff; background: rgba(255,255,255,.06); }
+.nav-btns { display: flex; gap: 10px; margin-left: 16px; }
+.burger { display: none; background: none; border: 0; width: 40px; height: 40px; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; align-items: center; }
+.burger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: .2s; }
+.burger.x span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.x span:nth-child(2) { opacity: 0; }
+.burger.x span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Hero */
+.hero { background: var(--dark); padding: 150px 0 90px; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at 30% 40%, #000 30%, transparent 75%); }
+.glow { position: absolute; width: 520px; height: 520px; border-radius: 50%; filter: blur(110px); opacity: .35; pointer-events: none; }
+.g1 { background: var(--primary); top: -200px; left: -160px; }
+.g2 { background: var(--accent); bottom: -260px; right: -120px; }
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; font-size: 13px; color: var(--primary); background: color-mix(in srgb, var(--primary) 10%, transparent); border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent); margin-bottom: 24px; }
+.hero h1 { color: #fff; font-size: clamp(34px, 5vw, 56px); font-weight: 800; }
+.lead { color: #a5b0c8; font-size: 18px; margin-top: 22px; max-width: 560px; }
+.stats { display: grid; grid-template-columns: repeat(4, auto); gap: 32px; margin-top: 44px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.08); justify-content: start; }
+.stats strong { display: block; color: #fff; font-size: 26px; font-weight: 800; }
+.stats span { color: #8691a8; font-size: 13px; }
+.hero-media { position: relative; }
+.hero-img, .hero-ph { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 24px; box-shadow: 0 30px 80px -20px color-mix(in srgb, var(--accent) 60%, transparent); border: 1px solid rgba(255,255,255,.1); font-size: 28px; }
+
+/* Banner */
+.banner { padding: 32px 0 0; background: #fff; }
+.banner-link img { width: 100%; border-radius: var(--r); }
+
+/* Cursos */
+.courses { background: #fff; }
+.filter { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: -16px 0 36px; }
+.chip { border: 1px solid var(--line); background: #fff; padding: 8px 16px; border-radius: 999px; font: inherit; font-size: 13px; font-weight: 600; color: var(--text); cursor: pointer; }
+.chip.on, .chip:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.course { background: #fff; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+.course:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -20px rgba(15,23,42,.25); }
+.course-img img, .course-ph { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.course-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tags span { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 10%, #fff); color: color-mix(in srgb, var(--accent) 80%, #000); }
+.course h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.course p { font-size: 14px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 18px; }
+.more { margin-top: auto; align-self: flex-end; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, #fff); padding: 8px 16px; border-radius: 999px; }
+.more:hover { background: var(--accent); color: #fff; }
+
+/* Seções escuras */
+.dark-sec { background: var(--dark); color: #a5b0c8; }
+.grad-sec { background: linear-gradient(180deg, color-mix(in srgb, var(--dark) 90%, #1e1b4b), color-mix(in srgb, var(--dark) 80%, #312e81)); }
+.groups-logo { max-height: 64px; width: auto; margin: 0 auto 24px; }
+.state-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.state { display: flex; flex-direction: column; align-items: center; padding: 18px 8px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); transition: .2s; text-align: center; }
+.state strong { color: var(--primary); font-size: 22px; font-weight: 800; }
+.state span { font-size: 12px; color: #8691a8; }
+.state:hover { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 10%, transparent); transform: translateY(-3px); }
+
+.feat { padding: 28px; border-radius: var(--r); background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.08); transition: .25s; }
+.feat:hover { border-color: rgba(255,255,255,.2); transform: translateY(-4px); }
+.feat-ic { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 18px; }
+.t1 { background: color-mix(in srgb, var(--primary) 18%, transparent); color: var(--primary); }
+.t2 { background: color-mix(in srgb, var(--accent-2) 18%, transparent); color: var(--accent-2); }
+.t3 { background: color-mix(in srgb, var(--accent) 22%, transparent); color: #a78bfa; }
+.t4 { background: rgba(250,204,21,.15); color: #facc15; }
+.feat h3 { color: #fff; font-size: 17px; margin-bottom: 8px; }
+.feat p { font-size: 14px; }
+.features .btn-primary { margin-top: 48px; }
+
+/* Sobre */
+.about { background: var(--bg); }
+.about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
+.about-media { position: relative; }
+.about-img, .about-ph { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 24px; font-size: 22px; }
+.float-card { position: absolute; left: 24px; bottom: 24px; display: flex; gap: 12px; align-items: center; background: #fff; padding: 14px 18px; border-radius: 14px; box-shadow: 0 20px 40px -12px rgba(15,23,42,.3); color: var(--primary-2); }
+.float-card strong { display: block; color: var(--ink); font-size: 14px; }
+.float-card span { font-size: 12px; color: var(--text); }
+.about-copy h2 { margin-bottom: 20px; }
+.about-copy p { margin-bottom: 14px; }
+.checks { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin: 22px 0; }
+.checks li { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--ink); }
+.checks svg { color: var(--primary-2); flex-shrink: 0; margin-top: 3px; }
+blockquote { border-left: 4px solid var(--accent); background: color-mix(in srgb, var(--accent) 7%, #fff); padding: 16px 20px; border-radius: 0 12px 12px 0; font-style: italic; font-weight: 600; color: var(--ink); margin-bottom: 26px; }
+.about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 64px; }
+.about-stats div { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 24px; text-align: center; }
+.about-stats strong { display: block; font-size: 32px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.about-stats span { font-size: 13px; }
+
+.img-links { background: var(--bg); padding-top: 0; }
+.img-link img { width: 100%; border-radius: var(--r); transition: transform .25s; }
+.img-link:hover img { transform: translateY(-6px); }
+
+/* Depoimentos */
+.testimonials { background: #fff; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.testi-score { grid-row: span 2; background: var(--dark); border-radius: 20px; padding: 36px 30px; color: #a5b0c8; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; }
+.testi-score .q { font-size: 90px; line-height: .6; color: var(--primary); opacity: .5; font-family: Georgia, serif; height: 40px; }
+.testi-score strong { font-size: 56px; color: #fff; font-weight: 800; line-height: 1; }
+.testi-score em { font-style: normal; color: #fff; font-weight: 600; }
+.stars { display: flex; gap: 2px; color: #fbbf24; }
+.stars svg { fill: currentColor; }
+.testi { border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+.testi p { color: var(--ink); font-size: 15px; flex: 1; }
+.who { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.ini { display: grid; place-items: center; background: var(--grad); color: #fff; font-weight: 700; }
+.who strong { display: block; color: var(--ink); font-size: 14px; }
+.who span { font-size: 12px; }
+
+/* Notícias */
+.news { background: #f9f8f6; }
+.news-title { text-align: center; margin-bottom: 40px; font-size: clamp(24px, 3vw, 32px); }
+.news-card { position: relative; border-radius: var(--r); overflow: hidden; aspect-ratio: 3/4; display: block; background: var(--dark); }
+.news-card img, .news-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.news-card:hover img { transform: scale(1.06); }
+.news-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(2,6,23,.92)); }
+.news-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px; z-index: 1; }
+.news-body h3 { color: #fff; font-size: 17px; margin-bottom: 8px; }
+.news-body span { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; color: #cbd5e1; }
+
+/* CTA */
+.cta { background: linear-gradient(135deg, #0f172a 0%, color-mix(in srgb, var(--accent) 25%, #0f0a1e) 50%, #0f172a 100%); }
+.eyebrow { display: block; color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+.cta h2 { color: #fff; }
+.cta p { margin-top: 16px; font-size: 17px; }
+
+/* Rodapé */
+.foot { background: #050714; color: #8691a8; padding: 56px 0 24px; font-size: 14px; }
+.foot-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.foot-grid p { max-width: 380px; margin: 14px 0 18px; }
+.socials { display: flex; gap: 10px; }
+.social { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; background: rgba(255,255,255,.06); color: #cbd5e1; }
+.social:hover { background: var(--primary); color: #fff; }
+.foot-links { display: flex; flex-direction: column; gap: 10px; }
+.foot-links a:hover { color: #fff; }
+.copy { border-top: 1px solid rgba(255,255,255,.06); margin-top: 40px; padding-top: 20px; font-size: 13px; }
+
+.wa-float { position: fixed; right: 20px; bottom: 20px; width: 58px; height: 58px; border-radius: 50%; background: #22c55e; color: #fff; display: grid; place-items: center; box-shadow: 0 10px 30px -6px rgba(34,197,94,.7); z-index: 60; transition: transform .2s; }
+.wa-float:hover { transform: scale(1.08); }
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .g4 { grid-template-columns: repeat(2, 1fr); }
+  .state-grid { grid-template-columns: repeat(4, 1fr); }
+  .nav { position: fixed; inset: 68px 0 auto; flex-direction: column; align-items: stretch; background: var(--dark); padding: 16px 20px 24px; border-bottom: 1px solid rgba(255,255,255,.08); transform: translateY(-120%); transition: transform .3s; gap: 2px; max-height: calc(100vh - 68px); overflow: auto; }
+  .nav.open { transform: none; }
+  .nav-link { padding: 12px; }
+  .nav-btns { margin: 12px 0 0; }
+  .burger { display: flex; }
+}
+@media (max-width: 860px) {
+  section { padding: 64px 0; }
+  .g3, .testi-grid { grid-template-columns: 1fr 1fr; }
+  .hero { padding: 120px 0 64px; }
+  .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-media { max-width: 420px; }
+  .stats, .about-stats { grid-template-columns: repeat(2, 1fr); }
+  .testi-score { grid-row: auto; grid-column: span 2; }
+}
+@media (max-width: 560px) {
+  .g3, .g4, .testi-grid, .checks { grid-template-columns: 1fr; }
+  .testi-score { grid-column: auto; }
+  .state-grid { grid-template-columns: repeat(3, 1fr); }
+  .actions .btn { width: 100%; justify-content: center; }
+  .nav-btns { flex-direction: column; }
+  .nav-btns .btn { justify-content: center; }
+}
+
+/* ---------- Opções extras ---------- */
+/* Hero com imagem de fundo */
+.hero.has-bg { background: var(--dark) var(--hero-bg) center / cover no-repeat; min-height: 92vh; display: flex; align-items: center; }
+.hero.has-bg::before { background: linear-gradient(90deg, color-mix(in srgb, var(--dark) 92%, transparent) 0%, color-mix(in srgb, var(--dark) 55%, transparent) 55%, transparent 100%), linear-gradient(0deg, var(--dark) 0%, transparent 30%); mask-image: none; background-size: auto; }
+.hero.has-bg .glow { opacity: .15; }
+.hero-grid.solo { grid-template-columns: minmax(0, 640px); }
+.hero-emblem { max-height: 96px; width: auto; margin-bottom: 18px; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 22px; }
+.hero-chips span { display: inline-flex; align-items: center; gap: 6px; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.hero-chips svg { color: var(--primary); }
+.hero .btn-green { box-shadow: 0 10px 30px -10px #22c55e; }
+@media (max-width: 860px) {
+  .hero.has-bg { background-image: var(--hero-bg-m); min-height: 0; padding-top: 120px; }
+  .hero.has-bg::before { background: linear-gradient(0deg, var(--dark) 15%, color-mix(in srgb, var(--dark) 55%, transparent) 60%, color-mix(in srgb, var(--dark) 35%, transparent) 100%); }
+  .hero.has-bg .hero-copy { padding-top: 34vh; }
+}
+
+/* Cursos só com imagem */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 16px; }
+.course.tile { border: 0; background: none; border-radius: 14px; }
+.tile-link img, .tile-ph { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; }
+
+/* Grupos com cartaz */
+.state-grid.posters { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.state.poster { padding: 0; overflow: hidden; border-radius: 12px; }
+.state.poster img { width: 100%; aspect-ratio: 1070 / 1470; object-fit: cover; }
+
+/* Imagens com link */
+.img-link-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.img-link { flex: 0 1 260px; }
+
+/* Tema escuro (todas as seções) */
+body.theme-dark { --ink: #f8fafc; --text: #a5b0c8; --line: rgba(255,255,255,.1); --bg: var(--dark); background: var(--dark); }
+.theme-dark .courses, .theme-dark .about, .theme-dark .testimonials, .theme-dark .news, .theme-dark .banner, .theme-dark .img-links { background: var(--dark); }
+.theme-dark .groups, .theme-dark .features { background: color-mix(in srgb, var(--dark) 88%, #fff 3%); }
+.theme-dark .course, .theme-dark .testi, .theme-dark .about-stats div, .theme-dark .chip { background: rgba(255,255,255,.04); }
+.theme-dark .course.tile { background: none; }
+.theme-dark .badge { background: color-mix(in srgb, var(--primary) 14%, transparent); border-color: color-mix(in srgb, var(--primary) 35%, transparent); color: var(--primary); }
+.theme-dark .btn-outline { background: transparent; color: var(--primary); }
+.theme-dark .btn-outline:hover { color: #fff; }
+.theme-dark .chip.on, .theme-dark .chip:hover { background: var(--primary); border-color: var(--primary); }
+.theme-dark .tags span, .theme-dark .more { background: color-mix(in srgb, var(--primary) 14%, transparent); color: var(--primary); }
+.theme-dark .float-card { background: #111; }
+.theme-dark blockquote { background: rgba(255,255,255,.04); }
+.theme-dark .testi-score { background: rgba(255,255,255,.04); border: 1px solid var(--line); }
+.theme-dark .foot { background: #000; }
+
+/* Ajustes de celular */
+@media (max-width: 1024px) {
+  .nav { visibility: hidden; transition: transform .3s, visibility .3s; }
+  .nav.open { visibility: visible; }
+  .no-menu .burger { display: none; }
+  .no-menu .nav { position: static; transform: none; visibility: visible; flex-direction: row; background: none; padding: 0; border: 0; max-height: none; }
+  .no-menu .nav-btns { margin: 0; flex-direction: row; }
+}
+@media (max-width: 560px) {
+  .tile-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .state-grid.posters { grid-template-columns: repeat(2, 1fr); }
+  .img-link { flex-basis: calc(50% - 10px); }
+}
+
+.sq .course-img img, .sq .course-ph { aspect-ratio: 1; }
+
+.focus-esquerda { object-position: left; } .focus-direita { object-position: right; } .focus-topo { object-position: top; }
+
+/* ---------- Páginas internas (cursos / notícias) ---------- */
+.course-grid.focus-topo img { object-position: top; }
+.course-grid.focus-esquerda img { object-position: left; }
+.course-grid.focus-direita img { object-position: right; }
+.course-hero-img.focus-topo img { object-position: top; }
+.empty-note { text-align: center; color: var(--muted); padding: 40px 0; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: #8691a8; margin-bottom: 18px; }
+.crumbs a:hover { color: var(--primary); }
+.crumbs em { font-style: normal; color: #cbd5e1; max-width: 360px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.page-hero { background: var(--dark); padding: 140px 0 70px; overflow: hidden; }
+.page-hero .crumbs { justify-content: center; }
+.page-hero h1 { color: #fff; font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; }
+.page-hero p { color: #a5b0c8; font-size: 17px; margin: 14px auto 0; max-width: 640px; }
+.page-hero .pill { margin-bottom: 16px; }
+.list-page { padding-top: 48px; }
+.list-page .filter { margin: 0 0 32px; }
+
+.course-hero { background: var(--dark); padding: 120px 0 56px; position: relative; overflow: hidden; }
+.course-hero::before { content: ""; position: absolute; inset: 0; background: var(--cover) center / cover no-repeat; opacity: .18; }
+.course-hero .wrap { position: relative; }
+.course-hero-grid { display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: center; }
+.course-hero h1 { color: #fff; font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; margin: 10px 0 14px; }
+.course-hero .lead { margin-top: 0; }
+.course-hero .tags span { background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: .04em; }
+.course-hero-img img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 18px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
+.course-main { padding: 48px 0 80px; }
+.course-layout { display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start; }
+.box { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 30px; margin-bottom: 24px; }
+.box-title { display: flex; align-items: center; gap: 10px; font-size: 22px; margin-bottom: 18px; }
+.box-title svg { color: var(--primary); }
+.benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.benefit { display: flex; gap: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; }
+.benefit .feat-ic { width: 42px; height: 42px; margin: 0; flex-shrink: 0; }
+.benefit strong { color: var(--ink); display: block; }
+.benefit p { font-size: 14px; }
+.guarantee { display: flex; gap: 12px; align-items: center; margin-top: 18px; padding: 16px 18px; border-radius: 14px; background: color-mix(in srgb, #22c55e 10%, #fff); color: #15803d; font-size: 14px; }
+.buy-box { position: sticky; top: 90px; }
+.buy-inner { background: #fff; border: 2px solid var(--primary); border-radius: 20px; padding: 26px; text-align: center; box-shadow: 0 24px 50px -24px color-mix(in srgb, var(--primary) 60%, transparent); }
+.offer { display: inline-block; background: color-mix(in srgb, var(--primary) 12%, #fff); color: var(--primary-2); font-weight: 700; font-size: 13px; padding: 6px 14px; border-radius: 999px; margin-bottom: 12px; }
+.old { display: block; color: var(--muted); font-size: 15px; }
+.price { display: block; font-size: clamp(26px, 2.4vw, 34px); white-space: nowrap; font-weight: 800; color: var(--ink); line-height: 1.1; }
+.inst { display: block; font-size: 14px; margin-bottom: 6px; }
+.btn-block { width: 100%; justify-content: center; margin: 16px 0 4px; }
+.inc-title { text-align: left; font-weight: 700; color: var(--ink); margin-top: 18px; }
+.checks.one { grid-template-columns: 1fr; text-align: left; margin: 12px 0 0; }
+.secure { font-size: 12px; color: var(--muted); display: flex; gap: 6px; justify-content: center; align-items: center; margin-top: 16px; }
+.prose { color: var(--text); font-size: 16px; line-height: 1.75; }
+.prose h2 { font-size: 24px; margin: 28px 0 12px; }
+.prose h3 { font-size: 19px; margin: 22px 0 10px; }
+.prose p { margin-bottom: 14px; }
+.prose ul { margin: 0 0 16px 20px; }
+.prose li { margin-bottom: 6px; }
+.prose a { color: var(--primary-2); text-decoration: underline; }
+.prose img { border-radius: 14px; margin: 18px 0; }
+.prose strong { color: var(--ink); }
+.box.prose > :first-child { margin-top: 0; }
+
+.posts { background: var(--bg); }
+.posts.featured { background: #fff; }
+.post-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; height: 100%; transition: transform .25s, box-shadow .25s; }
+.post-card:hover { transform: translateY(-5px); box-shadow: 0 24px 48px -20px rgba(15,23,42,.25); }
+.post-img { position: relative; }
+.post-img img, .post-img .ph { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.flag { position: absolute; top: 12px; left: 12px; display: inline-flex; gap: 5px; align-items: center; background: var(--primary); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 999px; text-transform: uppercase; }
+.flag svg { fill: currentColor; }
+.post-body { padding: 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.post-tag { align-self: flex-start; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, #fff); color: color-mix(in srgb, var(--accent) 80%, #000); }
+.post-body h3 { font-size: 17px; }
+.post-body p { font-size: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.post-date { margin-top: auto; display: inline-flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); }
+.posts .filter { margin: -16px 0 32px; }
+
+.article { padding: 110px 0 30px; background: #fff; }
+.article .crumbs { color: var(--muted); }
+.article .crumbs em { color: var(--text); }
+.article h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin: 12px 0; }
+.lead-dark { font-size: 18px; color: var(--text); }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin: 22px 0 28px; font-size: 13px; }
+.meta > div strong { display: block; color: var(--ink); font-size: 14px; }
+.meta-i { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
+.article-cover img { width: 100%; max-height: 520px; object-fit: cover; border-radius: 20px; margin-bottom: 36px; }
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; border-top: 1px solid var(--line); padding-top: 22px; margin-top: 30px; }
+.share strong { color: var(--ink); margin-right: 4px; }
+.share a, .share button { display: inline-flex; gap: 6px; align-items: center; padding: 9px 14px; border-radius: 10px; border: 1px solid var(--line); background: #fff; color: var(--text); font: inherit; font-size: 13px; cursor: pointer; }
+.share a:hover, .share button:hover { border-color: var(--primary); color: var(--primary-2); }
+
+.theme-dark .box, .theme-dark .buy-inner, .theme-dark .post-card, .theme-dark .article, .theme-dark .posts.featured, .theme-dark .share a, .theme-dark .share button { background: rgba(255,255,255,.04); }
+.theme-dark .posts, .theme-dark .article { background: var(--dark); }
+
+@media (max-width: 960px) {
+  .course-hero-grid, .course-layout { grid-template-columns: 1fr; }
+  .buy-box { position: static; }
+  .course-hero-img { max-width: 460px; }
+}
+@media (max-width: 560px) {
+  .benefits { grid-template-columns: 1fr; }
+  .box { padding: 22px; }
+  .crumbs em { max-width: 200px; }
+}
+.wide .course-img img, .wide .course-ph { aspect-ratio: 16 / 9; }
+
+/* Filtro por região/estado (página de cursos) */
+.courses-layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 28px; align-items: start; }
+.courses-main .grid.g3 { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+.cat-box { position: sticky; top: 90px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px; max-height: calc(100vh - 110px); overflow: auto; }
+.cat-box h3 { display: flex; align-items: center; gap: 8px; font-size: 15px; margin-bottom: 14px; }
+.cat-box h3 svg { color: var(--primary); }
+.cat-box button { width: 100%; display: flex; align-items: center; gap: 10px; border: 0; background: none; font: inherit; font-size: 14px; color: var(--ink); text-align: left; padding: 9px 10px; border-radius: 10px; cursor: pointer; }
+.cat-box button span { margin-left: auto; min-width: 26px; text-align: center; font-size: 12px; font-weight: 600; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
+.cat-box button:hover { background: color-mix(in srgb, var(--primary) 8%, transparent); }
+.cat-all { justify-content: flex-start; font-weight: 700; background: color-mix(in srgb, var(--primary) 10%, transparent) !important; margin-bottom: 8px; }
+.cat-box button.on { background: var(--primary) !important; color: #fff; }
+.cat-box button.on span { background: rgba(255,255,255,.22); border-color: transparent; color: #fff; }
+.cat-list, .cat-list ul { list-style: none; }
+.cat { font-weight: 600; }
+.cat i { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex-shrink: 0; }
+.cat-list ul { margin: 0 0 6px 18px; border-left: 1px dashed var(--line); padding-left: 6px; }
+.cat.sub { font-weight: 500; font-size: 13px; padding: 7px 10px; color: var(--text); }
+.cat.sub i { width: 6px; height: 6px; background: var(--muted); }
+.theme-dark .cat-box { background: rgba(255,255,255,.04); }
+@media (max-width: 860px) {
+  .courses-layout { grid-template-columns: 1fr; }
+  .cat-box { position: static; max-height: none; }
+  .cat-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8px; }
+}
+@media (max-width: 480px) { .cat-list { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .cat-list ul { display: none; } .cat-list { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .cat-list { grid-template-columns: 1fr 1fr; } .cat-box button { font-size: 13px; padding: 8px; } }
+
+/* Topo no celular: imagem primeiro, mais baixa (5:4), como no site da Fabiana */
+@media (max-width: 860px) {
+  .hero { padding-top: 92px; }
+  .hero-grid { gap: 26px; }
+  .hero-media { order: -1; max-width: none; }
+  .hero-img, .hero-ph { aspect-ratio: 5 / 4; object-position: center 22%; border-radius: 20px; font-size: 22px; }
+  .hero h1 { font-size: clamp(30px, 8.6vw, 40px); }
+  .lead { font-size: 16px; margin-top: 16px; }
+  .pill { margin-bottom: 16px; }
+}
+
+/* Aprovados / resultados */
+.results { background: var(--dark); overflow: hidden; }
+.results .wrap { position: relative; }
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+.result { display: flex; flex-direction: column; gap: 6px; padding: 26px 22px; border-radius: 18px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09); transition: .25s; color: #a5b0c8; }
+a.result:hover { border-color: var(--primary); transform: translateY(-4px); background: color-mix(in srgb, var(--primary) 8%, transparent); }
+.r-num { font-size: clamp(40px, 5vw, 56px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.r-label { color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 13px; }
+.result p { font-size: 14px; margin-top: 4px; }
+.r-foot { margin-top: auto; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; }
+.r-foot em { font-style: normal; display: inline-flex; gap: 5px; align-items: center; color: #8691a8; }
+.r-link { display: inline-flex; gap: 5px; align-items: center; color: var(--primary); font-weight: 600; }
+.r-note { text-align: center; font-size: 13px; color: #8691a8; margin-top: 22px; }
+.results .btn-primary { margin-top: 36px; }
+@media (max-width: 560px) { .results-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .result { padding: 18px 14px; } .r-foot { flex-direction: column; align-items: flex-start; } }
+
+/* Professores */
+.teachers { background: #fff; }
+.teacher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; }
+.teacher { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 24px 14px; border: 1px solid var(--line); border-radius: 18px; background: #fff; transition: .25s; }
+.teacher:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -22px rgba(15,23,42,.3); }
+.teacher-photo { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; margin-bottom: 8px; box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 18%, transparent); }
+.teacher-photo.ini { display: grid; place-items: center; background: var(--grad); color: #fff; font-weight: 800; font-size: 30px; letter-spacing: -.02em; }
+.teacher strong { color: var(--ink); font-size: 15px; }
+.teacher-subject { font-size: 13px; color: var(--text); }
+.teacher-ig { display: inline-flex; gap: 5px; align-items: center; font-size: 12px; font-weight: 600; color: var(--primary-2); margin-top: 2px; }
+.theme-dark .teachers, .theme-dark .teacher { background: rgba(255,255,255,.03); }
+@media (max-width: 560px) { .teacher-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .teacher-photo { width: 72px; height: 72px; } }
+
+/* Depoimentos com print */
+.testi-wall { columns: 3 300px; column-gap: 20px; }
+.testi-wall > * { break-inside: avoid; margin-bottom: 20px; }
+.testi-wall .testi-score { display: flex; }
+.testi-print { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 18px 40px -26px rgba(15,23,42,.35); }
+.print-btn { display: block; position: relative; width: 100%; border: 0; padding: 0; background: #ece5dd; cursor: zoom-in; }
+.print-btn img { width: 100%; display: block; }
+.zoom-ic { position: absolute; right: 10px; bottom: 10px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(15,23,42,.65); color: #fff; opacity: 0; transition: .2s; }
+.print-btn:hover .zoom-ic, .print-btn:focus-visible .zoom-ic { opacity: 1; }
+.testi-print figcaption { padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--line); }
+.testi-print figcaption p { color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+.testi-print figcaption strong { color: var(--ink); font-size: 14px; }
+.testi-print figcaption span { font-size: 12px; color: var(--text); }
+.testi-note { display: flex; gap: 6px; align-items: center; justify-content: center; text-align: center; font-size: 13px; color: var(--muted); margin-top: 6px; }
+.lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(5,7,20,.88); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) 16px; cursor: zoom-out; }
+.lightbox img { max-width: min(92vw, 760px); max-height: 88vh; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+.lightbox button { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 18px; cursor: pointer; }
+
+/* Carrossel de professores */
+.carousel { position: relative; }
+.car-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 6px 4px 18px; scrollbar-width: none; }
+.car-track::-webkit-scrollbar { display: none; }
+.teacher-card { flex: 0 0 calc((100% - 3 * 18px) / 4); scroll-snap-align: start; border-radius: 20px; overflow: hidden; background: #fff; border: 1px solid var(--line); box-shadow: 0 20px 40px -28px rgba(15,23,42,.45); transition: transform .25s; }
+.teacher-card:hover { transform: translateY(-4px); }
+.teacher-img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.teacher-img.ini { display: grid; place-items: center; background: var(--grad); color: #fff; font-weight: 800; font-size: 54px; }
+.teacher-info { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 2px; }
+.teacher-info strong { color: var(--ink); font-size: 16px; }
+.teacher-info span { color: var(--primary-2); font-size: 13px; font-weight: 600; }
+.car-btn { position: absolute; top: 40%; z-index: 2; width: 46px; height: 46px; border-radius: 50%; border: 0; display: grid; place-items: center; background: var(--primary); color: #fff; box-shadow: 0 10px 24px -8px var(--primary); cursor: pointer; }
+.car-btn.prev { left: -20px; } .car-btn.prev svg { transform: rotate(180deg); }
+.car-btn.next { right: -20px; }
+.theme-dark .testi-print, .theme-dark .teacher-card { background: rgba(255,255,255,.04); }
+@media (max-width: 1024px) { .teacher-card { flex-basis: calc((100% - 2 * 18px) / 3); } .car-btn.prev { left: 4px; } .car-btn.next { right: 4px; } }
+@media (max-width: 700px) { .teacher-card { flex-basis: 72%; } .testi-wall { columns: 1; } }
+@media (max-width: 700px) { .car-btn { width: 38px; height: 38px; top: 36%; } }
+
+/* Professores: estilo foto de perfil do Instagram */
+.profiles .car-track { gap: 22px; padding: 8px 6px 14px; }
+.profile { flex: 0 0 116px; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px; }
+.ring { width: 104px; height: 104px; border-radius: 50%; padding: 3px; background: conic-gradient(from 210deg, var(--primary), var(--accent-2), var(--accent), var(--primary)); display: block; margin-bottom: 8px; transition: transform .2s; }
+.profile:hover .ring { transform: scale(1.05); }
+.avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 3px solid #fff; display: grid; place-items: center; background: #1a1210; }
+.avatar-img.ini { background: linear-gradient(135deg, #2a1a12, #120c09); color: #fff; font-weight: 800; font-size: 28px; letter-spacing: -.02em; }
+.profile strong { color: var(--ink); font-size: 13px; line-height: 1.25; }
+.profile span:not(.ring):not(.avatar-img) { color: var(--text); font-size: 11.5px; line-height: 1.3; }
+.profiles .car-btn { top: 36px; width: 38px; height: 38px; }
+.profiles-note { text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px; }
+.theme-dark .avatar-img { border-color: var(--dark); }
+@media (max-width: 700px) { .profile { flex-basis: 92px; } .ring { width: 82px; height: 82px; } .profiles .car-track { gap: 14px; } .profiles .car-btn { display: none; } }
+
+/* Depoimentos no celular: faixa horizontal compacta */
+@media (max-width: 700px) {
+  .testi-wall { columns: auto; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 14px; margin: 0 -4px; scrollbar-width: none; align-items: flex-start; }
+  .testi-wall::-webkit-scrollbar { display: none; }
+  .testi-wall > * { flex: 0 0 80%; margin: 0; scroll-snap-align: center; }
+  .testi-wall .testi-score { padding: 22px 20px; gap: 6px; }
+  .testi-wall .testi-score strong { font-size: 40px; }
+  .testi-print .print-btn img { max-height: 300px; object-fit: cover; object-position: top; }
+  .testi-print figcaption { padding: 10px 12px; }
+  .testi-note::before { content: "← arraste para ver mais → "; font-weight: 600; margin-right: 4px; }
+}
+@media (max-width: 700px) { .testi-note { flex-wrap: wrap; } .testi-note::before { display: block; width: 100%; content: "Arraste para o lado para ver mais prints"; color: var(--primary-2); margin: 0 0 4px; } }
+
+html { scroll-padding-top: 80px; }
+.demo-flag { position: fixed; left: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 70; background: var(--dark); color: #fff; font: 600 12px/1 var(--font); padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.demo-flag b { color: var(--primary); }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="demo-flag"><b>●</b> Prévia para aprovação</div>
+<script>window.SITE_DATA = {"site":{"name":"Missão 193","logo":"uploads/logo-missao-193-hd.png","logoText":"MISSÃO{193}","favicon":"uploads/favicon-missao-193.png","title":"Missão 193 | Curso preparatório para Bombeiro Militar","description":"Seja aprovado(a) em qualquer concurso de Bombeiro Militar estudando com o maior curso do Brasil. Videoaulas, PDFs, quizzes e simulados.","ogImage":"uploads/capa-m193-1.webp","whatsapp":"5561996367842","whatsappMessage":"Olá! Vim pelo site da Missão 193.","showWhatsappButton":true},"theme":{"primary":"#ff5a00","primaryDark":"#e04e00","accent":"#ff8a1f","accent2":"#ffc23d","dark":"#0d0a08","mode":"claro","font":"Inter"},"header":{"menu":[{"label":"Início","url":"./"},{"label":"Cursos","url":"cursos"},{"label":"Notícias","url":"noticias"},{"label":"Grupos gratuitos","url":"#grupos"},{"label":"Plataforma","url":"#plataforma"}],"btn1Label":"Suporte","btn1Url":"https://wa.me/5561996367842","btn2Label":"Área do aluno","btn2Url":"https://app.missao193.com.br/"},"order":["hero","banner","courses","results","testimonials","about","teachers","groups","features","imageLinks","news","cta"],"sections":{"hero":{"enabled":true,"chips":[],"emblem":"","badge":"Curso preparatório para Bombeiro Militar","title":"Seja aprovado(a) em\n{qualquer Bombeiro}","text":"A maior plataforma de estudos para futuros bombeiros: videoaulas, PDFs, quizzes e simulados focados no edital do seu Corpo de Bombeiros.","btn1Label":"Conhecer cursos","btn1Url":"#cursos","btn2Label":"Grupos gratuitos","btn2Url":"#grupos","btn3Label":"","btn3Url":"","bgImage":"","bgImageMobile":"","image":"uploads/foto-topo-bombeiro.jpg","imageCaption":"Bombeiro Missão 193","stats":[{"value":"+1.900","label":"alunos em listas de aprovação em 2026"},{"value":"43,6 mil","label":"seguidores no Instagram"},{"value":"8","label":"cursos completos"},{"value":"12","label":"grupos gratuitos"}],"imageFocus":"centro"},"banner":{"enabled":false,"image":"","imageMobile":"","url":"#","alt":""},"courses":{"enabled":true,"badge":"Nossos cursos","title":"Cursos em destaque","subtitle":"Cursos pensados para transformar seu conhecimento em resultados.","layout":"completo","imageRatio":"16:9","showFilter":true,"btnLabel":"Ver todos os cursos","btnUrl":"cursos","imageFocus":"centro","onlyFeatured":false,"limit":"0"},"groups":{"enabled":true,"badge":"Grupos de estudo gratuitos","title":"Encontre o grupo do\n{seu Bombeiro} agora","text":"Grupos no WhatsApp com acesso gratuito, materiais complementares e a comunidade de quem vai vestir a farda no seu estado.","items":[{"code":"MG","name":"CBMMG 2027","url":"https://app.missao193.com.br/vip/CBMMG-2027","image":""},{"code":"GO","name":"CBMGO","url":"https://app.missao193.com.br/vip/grupos-cbmgo","image":""},{"code":"DF","name":"CBMDF","url":"https://app.missao193.com.br/vip/cbmdf-grupos-gratuitos","image":""},{"code":"RR","name":"CBMRR","url":"https://app.missao193.com.br/vip/grupos-cbmrr","image":""},{"code":"PE","name":"CBMPE","url":"https://app.missao193.com.br/vip/grupo-de-estudos-cbmpe","image":""},{"code":"AL","name":"CBMAL","url":"https://app.missao193.com.br/vip/grupo-de-estudos-cbmal","image":""},{"code":"BA","name":"CBMBA","url":"https://app.missao193.com.br/vip/grupo-de-estudos-cbmba","image":""},{"code":"MA","name":"CBMMA","url":"https://app.missao193.com.br/vip/grupo-de-estudos-cbmma","image":""},{"code":"PR","name":"CBMPR","url":"https://app.missao193.com.br/vip/grupo-de-estudos-cbmpr","image":""},{"code":"NE","name":"Nordeste","url":"https://app.missao193.com.br/vip/grupos-cbmnordeste","image":""},{"code":"SE","name":"Sudeste","url":"https://app.missao193.com.br/vip/grupo-sudeste","image":""},{"code":"SUL","name":"Região Sul","url":"https://app.missao193.com.br/vip/regiao-sul","image":""}]},"features":{"enabled":true,"badge":"Plataforma completa","title":"Tudo o que você precisa para\n{vestir a farda}","text":"Tudo integrado na área do aluno: você aprende, revisa, treina e acompanha a sua evolução no mesmo lugar.","btnLabel":"Acessar a área do aluno","btnUrl":"https://app.missao193.com.br/","items":[{"icon":"play","title":"Videoaulas","text":"Aulas focadas no edital do seu Corpo de Bombeiros, para assistir no seu ritmo."},{"icon":"file","title":"PDFs","text":"Material escrito para estudar e revisar o conteúdo de cada aula."},{"icon":"database","title":"Banco com 49.093 questões","text":"Resolva questões e treine no estilo da banca do seu concurso."},{"icon":"target","title":"Simulados","text":"Treine no formato da prova e acompanhe sua evolução."},{"icon":"calendar","title":"Plano de estudos automático","text":"A plataforma organiza o que estudar e quando, de acordo com a sua rotina."},{"icon":"pen","title":"Caderno de erros","text":"Guarde as questões que errou e revise exatamente o que precisa."},{"icon":"cards","title":"Flashcards","text":"Revisões rápidas para fixar o conteúdo e não esquecer na hora da prova."},{"icon":"puzzle","title":"Quiz","text":"Questões rápidas para fixar o conteúdo logo depois de estudar."},{"icon":"file","title":"Discursiva com correção","text":"Envie sua discursiva e receba a correção."},{"icon":"chart","title":"Desempenho por assunto","text":"Veja onde você está forte e onde precisa reforçar."},{"icon":"trophy","title":"13 patentes com ranking","text":"Suba de patente estudando e acompanhe sua posição no ranking."},{"icon":"users","title":"Grupos gratuitos e suporte","text":"Comunidade no WhatsApp por estado e suporte direto com a equipe."}]},"about":{"enabled":true,"badge":"Sobre a Missão 193","title":"Missão 193 —\n{a sua aprovação no Bombeiro}","text":"A Missão 193 é a maior plataforma de estudos para futuros bombeiros, com um curso completo para cada Corpo de Bombeiros e conteúdo direcionado ao edital de cada estado.\n\nSó em 2026, alunos da Missão 193 apareceram nas listas de aprovados e convocados do CBMDF, CBMMG, CBMMA e CBMRR, além de aprovações no CBMPR e no CBMSC.","image":"uploads/foto-sobre-bombeiro.jpg","imageBadgeTitle":"Bombeiro Militar","imageBadgeText":"curso completo por estado","bullets":[{"text":"Curso completo para cada Corpo de Bombeiros"},{"text":"Videoaulas, PDFs e 49.093 questões"},{"text":"Plano de estudos automático e caderno de erros"},{"text":"Grupos gratuitos e suporte no WhatsApp"}],"quote":"Seja aprovado(a) em qualquer Bombeiro","btnLabel":"Conhecer os cursos","btnUrl":"#cursos","stats":[],"imageFocus":"centro"},"imageLinks":{"enabled":true,"badge":"","title":"","subtitle":"","items":[{"image":"uploads/missao-193-suporte-whatsapp.webp","url":"https://wa.me/5561996367842","alt":"Suporte WhatsApp Missão 193"},{"image":"uploads/youtube.webp","url":"https://www.youtube.com/@missao193","alt":"Canal YouTube Missão 193"},{"image":"uploads/missao-instagram.webp","url":"https://www.instagram.com/amissao193/","alt":"Instagram Missão 193"}]},"testimonials":{"enabled":true,"badge":"Feedbacks dos alunos","title":"Quem estudou, {aprovou}.","subtitle":"Prints reais das mensagens que os alunos enviaram para a equipe da Missão 193. Toque em um print para ampliar.","showStars":false,"rating":"+1.900","ratingLabel":"alunos em listas de aprovação em 2026","ratingText":"CBMDF, CBMMG, CBMMA e CBMRR, além de aprovações no CBMPR e no CBMSC.","items":[{"image":"uploads/depoimento-cbmdf-obrigada-missao.jpg","name":"Aprovada no CBMDF","role":"Comentário no post dos +1.271 aprovados","text":"","photo":"","stars":"0"},{"image":"uploads/depoimento-cfo-43-acertos.jpg","name":"43 acertos no CFO","role":"Aluno · CFO CBMMG","text":"","photo":"","stars":"0"},{"image":"uploads/depoimento-cbmdf-muito-grata.jpg","name":"Aprovada no CBMDF","role":"“Sou muito grata a vocês, a cada professor”","text":"","photo":"","stars":"0"},{"image":"uploads/depoimento-cfo-42.jpg","name":"42 na prova de CFO","role":"Aluno · CFO CBMMG","text":"","photo":"","stars":"0"},{"image":"uploads/depoimento-excelente-investimento.jpg","name":"“Excelente investimento”","role":"3º sargento do Exército · CFO CBMMG","text":"","photo":"","stars":"0"},{"image":"uploads/depoimento-84-pontos-revisao.jpg","name":"84 pontos na prova","role":"“A revisão me salvou de última hora”","text":"","photo":"","stars":"0"},{"image":"uploads/depoimento-curso-completo-luxo.jpg","name":"“Que luxo, viu”","role":"Aluna do curso completo","text":"","photo":"","stars":"0"},{"image":"uploads/depoimento-aulao-de-vespera.jpg","name":"Aulão de véspera","role":"“Ótima equipe de professores”","text":"","photo":"","stars":"0"}],"note":"Mensagens reais publicadas pela Missão 193 nos destaques do Instagram."},"news":{"enabled":true,"title":"Acompanhe as novidades da {Missão 193}","btnLabel":"Veja mais notícias","btnUrl":"noticias","limit":"4"},"cta":{"enabled":true,"badge":"Comece agora mesmo","title":"Pronto para começar a sua {Missão}?","text":"Escolha o curso do seu Corpo de Bombeiros ou fale com o nosso time comercial para tirar suas dúvidas.","btn1Label":"Conhecer cursos","btn1Url":"#cursos","btn2Label":"Fale com o comercial","btn2Url":"https://wa.me/message/VLF22COAOO2MB1"},"results":{"enabled":true,"badge":"Resultados reais","title":"Quem estudou com a Missão,\n{está vestindo a farda}","text":"Números divulgados pela Missão 193 a partir das listas oficiais de cada concurso em 2026.","items":[{"value":"1.271","label":"aprovados","detail":"CBMDF · somando todas as listas: 742 soldados, 391 condutores e outros 138","date":"2026","url":"","linkLabel":""},{"value":"255+","label":"convocados","detail":"CBMMG · CFSD, convocados para a 2ª etapa","date":"set/2026","url":"","linkLabel":""},{"value":"215","label":"aprovados","detail":"CBMMA · avançando para as próximas etapas","date":"nov/2026","url":"","linkLabel":""},{"value":"171","label":"aprovados","detail":"CBMRR · 143 soldados e 28 oficiais","date":"nov/2026","url":"","linkLabel":""}],"note":"Aprovados também no CBMPR e no CBMSC.","btnLabel":"Conhecer os cursos","btnUrl":"cursos"},"teachers":{"enabled":true,"badge":"Professores","title":"Quem vai te preparar para a {farda}","subtitle":"Mais de 50 professores especialistas em concursos de Bombeiro Militar, com aulas em todos os cursos da Missão 193.","items":[{"name":"Rodolfo Falquetto","subject":"Física · Coordenação","instagram":"","photo":"uploads/perfil-rodolfo-falquetto.jpg"},{"name":"Vítor Piauí","subject":"Química","instagram":"","photo":"uploads/perfil-vitor-piaui.jpg"},{"name":"Guilherme Girão","subject":"Física","instagram":"","photo":"uploads/perfil-guilherme-girao.jpg"},{"name":"Flávio Amorim","subject":"Matemática","instagram":"","photo":"uploads/perfil-flavio-amorim.jpg"},{"name":"Igor Muniz","subject":"Direito Constitucional","instagram":"","photo":"uploads/perfil-igor-muniz.jpg"},{"name":"Jefferson Rodrigues","subject":"Informática","instagram":"","photo":"uploads/perfil-jefferson-rodrigues.jpg"},{"name":"Alessandro Reis","subject":"Biologia","instagram":"","photo":"uploads/perfil-alessandro-reis.jpg"},{"name":"Rayanne Queiroz","subject":"Emergência Pré-Hospitalar","instagram":"","photo":"uploads/perfil-rayanne-queiroz.jpg"},{"name":"Álvaro Nunes","subject":"Legislação","instagram":"","photo":"uploads/perfil-alvaro-nunes.jpg"},{"name":"Rebecca Guimarães","subject":"Agenda Ambiental","instagram":"","photo":"uploads/perfil-rebecca-guimaraes.jpg"},{"name":"Atyla","subject":"Língua Portuguesa","instagram":"","photo":"uploads/perfil-atyla.jpg"},{"name":"Bruno Salazar","subject":"Matemática","instagram":"","photo":"uploads/perfil-bruno-salazar.jpg"},{"name":"Dionísio Bruno","subject":"História e Geografia","instagram":"","photo":"uploads/perfil-dionisio-bruno.jpg"},{"name":"Edimar","subject":"Legislação Estadual","instagram":"","photo":"uploads/perfil-edimar.jpg"},{"name":"Estevão Aguiar","subject":"Primeiros Socorros","instagram":"","photo":"uploads/perfil-estevao-aguiar.jpg"},{"name":"Gabriel Roriz","subject":"Informática","instagram":"","photo":"uploads/perfil-gabriel-roriz.jpg"},{"name":"José Vitor","subject":"Legislação","instagram":"","photo":"uploads/perfil-jose-vitor.jpg"},{"name":"Luan Zunino","subject":"Direção Defensiva","instagram":"","photo":"uploads/perfil-luan-zunino.jpg"},{"name":"Maicon Roque","subject":"Matemática","instagram":"","photo":"uploads/perfil-maicon-roque.jpg"},{"name":"Márcio Cunha","subject":"Gestão Pública","instagram":"","photo":"uploads/perfil-marcio-cunha.jpg"},{"name":"Nilo","subject":"Geografia de Goiás","instagram":"","photo":"uploads/perfil-nilo.jpg"},{"name":"Paulo Lacerda","subject":"Gestão Estratégica","instagram":"","photo":"uploads/perfil-paulo-lacerda.jpg"},{"name":"Rafael Cenoura","subject":"Direito Penal","instagram":"","photo":"uploads/perfil-rafael-cenoura.jpg"},{"name":"Ravan","subject":"Direitos Humanos","instagram":"","photo":"uploads/perfil-ravan.jpg"},{"name":"Rodrigo Francelino","subject":"Legislação do DF","instagram":"","photo":"uploads/perfil-rodrigo-francelino.jpg"},{"name":"Thiago English","subject":"Inglês","instagram":"","photo":"uploads/perfil-thiago-english.jpg"},{"name":"Tonny Viana","subject":"Ética e Legislação","instagram":"","photo":"uploads/perfil-tonny-viana.jpg"},{"name":"Vandré","subject":"Química e Legislação","instagram":"","photo":"uploads/perfil-vandre.jpg"},{"name":"Vitin","subject":"Reta Final CBMPR","photo":"uploads/perfil-vitin.jpg"},{"name":"Wagner Santos","subject":"Língua Portuguesa","instagram":"","photo":"uploads/perfil-wagner-santos.jpg"},{"name":"William da Cruz","subject":"Discursiva","instagram":"","photo":"uploads/perfil-william-da-cruz.jpg"},{"name":"Ziegler","subject":"Direito Processual Penal","instagram":"","photo":"uploads/perfil-ziegler.jpg"},{"name":"André Rodrigues","subject":"Defesa Civil e Desastres","instagram":"","photo":""},{"name":"Bruna","subject":"Geografia de Minas Gerais","instagram":"","photo":""},{"name":"Bruno Parente","subject":"Mecânica de Veículos","instagram":"","photo":""},{"name":"Gabriele Issa","subject":"Gestão Emocional","instagram":"","photo":""},{"name":"Guilherme","subject":"História","instagram":"","photo":""},{"name":"Isaac Silva","subject":"Legislação de Trânsito","instagram":"","photo":""},{"name":"Juliana Abrantes","subject":"Legislação Estadual","instagram":"","photo":""},{"name":"Juliana Magalhães","subject":"Legislação de Goiás","instagram":"","photo":""},{"name":"Leonardo","subject":"Informática","instagram":"","photo":""},{"name":"Lucas Honório","subject":"Direitos Humanos","instagram":"","photo":""},{"name":"Marcelo Freitas","subject":"Física","instagram":"","photo":""},{"name":"Marcos Soares","subject":"Lei Orgânica do DF","instagram":"","photo":""},{"name":"Noronha","subject":"Anatomia","instagram":"","photo":""},{"name":"Pedro","subject":"Teoria do Fogo","instagram":"","photo":""},{"name":"Pedro Constantino","subject":"Redação","instagram":"","photo":""},{"name":"Rafael de Oliveira","subject":"Direito Administrativo","instagram":"","photo":""},{"name":"Thiago","subject":"Legislação do DF","instagram":"","photo":""},{"name":"Údine","subject":"Raciocínio Lógico","instagram":"","photo":""},{"name":"Urani","subject":"Agenda Ambiental","instagram":"","photo":""},{"name":"Vitor de Andrade","subject":"Matemática","instagram":"","photo":""}],"note":"Arraste para o lado para ver todos os professores."}},"footer":{"text":"Curso preparatório para concursos de Bombeiro Militar.","links":[{"label":"Área do aluno","url":"https://app.missao193.com.br/"},{"label":"Cursos","url":"cursos"},{"label":"Notícias","url":"noticias"},{"label":"Grupos gratuitos","url":"#grupos"}],"socials":[{"icon":"instagram","url":"https://www.instagram.com/amissao193/"},{"icon":"youtube","url":"https://www.youtube.com/@missao193"},{"icon":"whatsapp","url":"https://wa.me/5561996367842"}],"copyright":"Todos os direitos reservados — Missão 193"},"courses":[{"slug":"cbmmg","title":"Curso completo CBMMG","featured":true,"published":true,"image":"uploads/curso-cbmmg.jpg","cover":"","tags":"Sudeste, Minas Gerais","text":"Preparatório completo para o concurso do Corpo de Bombeiros Militar de Minas Gerais, com videoaulas, PDFs, quizzes e simulados.","body":"## Curso completo CBMMG\nPreparatório completo para o concurso do Corpo de Bombeiros Militar de Minas Gerais, com conteúdo direcionado ao edital.\n\n### O que você encontra no curso\n- Videoaulas focadas no edital\n- PDFs para estudar e revisar\n- Quizzes para fixar o conteúdo\n- Simulados no formato da prova\n- Grupo de estudos gratuito no WhatsApp\n\n**Público-alvo:** candidatos ao concurso do Corpo de Bombeiros Militar de Minas Gerais.","oldPrice":"De R$ 2.091,00","price":"12x de R$ 103,11","installments":"ou R$ 997,00 à vista","offerLabel":"","buyLabel":"Quero ser bombeiro","buyUrl":"https://pay.hotmart.com/Y107220597I?off=yqc6i95v","includes":"","link":"","btnLabel":"Saiba mais"},{"slug":"cbmgo","title":"Curso completo CBMGO","featured":true,"published":true,"image":"uploads/curso-cbmgo.jpg","cover":"","tags":"Centro-Oeste, Goiás","text":"Preparatório completo para o concurso do Corpo de Bombeiros Militar de Goiás, com videoaulas, PDFs, quizzes e simulados.","body":"## Curso completo CBMGO\nPreparatório completo para o concurso do Corpo de Bombeiros Militar de Goiás, com conteúdo direcionado ao edital.\n\n### O que você encontra no curso\n- Videoaulas focadas no edital\n- PDFs para estudar e revisar\n- Quizzes para fixar o conteúdo\n- Simulados no formato da prova\n- Grupo de estudos gratuito no WhatsApp\n\n**Público-alvo:** candidatos ao concurso do Corpo de Bombeiros Militar de Goiás.","oldPrice":"De R$ 1.497,00","price":"12x de R$ 103,11","installments":"ou R$ 997,00 à vista","offerLabel":"","buyLabel":"Quero ser bombeiro","buyUrl":"https://pay.hotmart.com/K106509560M?off=eg850nn0","includes":"","link":"","btnLabel":"Saiba mais"},{"slug":"cbmrr","title":"Curso completo CBMRR","featured":true,"published":true,"image":"uploads/curso-cbmrr.jpg","cover":"","tags":"Norte, Roraima","text":"Preparatório completo para o concurso do Corpo de Bombeiros Militar de Roraima, com videoaulas, PDFs, quizzes e simulados.","body":"## Curso completo CBMRR\nPreparatório completo para o concurso do Corpo de Bombeiros Militar de Roraima, com conteúdo direcionado ao edital.\n\n### O que você encontra no curso\n- Videoaulas focadas no edital\n- PDFs para estudar e revisar\n- Quizzes para fixar o conteúdo\n- Simulados no formato da prova\n- Grupo de estudos gratuito no WhatsApp\n\n**Público-alvo:** candidatos ao concurso do Corpo de Bombeiros Militar de Roraima.","oldPrice":"De R$ 997,00","price":"12x de R$ 30,72","installments":"ou R$ 297,00 à vista","offerLabel":"","buyLabel":"Quero ser bombeiro","buyUrl":"https://pay.hotmart.com/Q106509468E","includes":"","link":"","btnLabel":"Saiba mais"},{"slug":"cbmpe","title":"Curso completo CBMPE","featured":true,"published":true,"image":"uploads/curso-cbmpe.jpg","cover":"","tags":"Nordeste, Pernambuco","text":"Preparatório completo para o concurso do Corpo de Bombeiros Militar de Pernambuco, com videoaulas, PDFs, quizzes e simulados.","body":"## Curso completo CBMPE\nPreparatório completo para o concurso do Corpo de Bombeiros Militar de Pernambuco, com conteúdo direcionado ao edital.\n\n### O que você encontra no curso\n- Videoaulas focadas no edital\n- PDFs para estudar e revisar\n- Quizzes para fixar o conteúdo\n- Simulados no formato da prova\n- Grupo de estudos gratuito no WhatsApp\n\n**Público-alvo:** candidatos ao concurso do Corpo de Bombeiros Militar de Pernambuco.","oldPrice":"De R$ 497,00","price":"12x de R$ 20,37","installments":"ou R$ 197,00 à vista","offerLabel":"🔥 Oferta Black","buyLabel":"Quero ser bombeiro de PE","buyUrl":"https://pay.hotmart.com/T106509287M?off=zcw5je3k","includes":"","link":"","btnLabel":"Saiba mais"},{"slug":"cbmal","title":"Curso completo CBMAL","featured":true,"published":true,"image":"uploads/curso-cbmal.jpg","cover":"","tags":"Nordeste, Alagoas","text":"Preparatório completo para o concurso do Corpo de Bombeiros Militar de Alagoas, com videoaulas, PDFs, quizzes e simulados.","body":"## Curso completo CBMAL\nPreparatório completo para o concurso do Corpo de Bombeiros Militar de Alagoas, com conteúdo direcionado ao edital.\n\n### O que você encontra no curso\n- Videoaulas focadas no edital\n- PDFs para estudar e revisar\n- Quizzes para fixar o conteúdo\n- Simulados no formato da prova\n- Grupo de estudos gratuito no WhatsApp\n\n**Público-alvo:** candidatos ao concurso do Corpo de Bombeiros Militar de Alagoas.","oldPrice":"De R$ 997,00","price":"12x de R$ 41,06","installments":"ou R$ 397,00 à vista","offerLabel":"","buyLabel":"Quero ser bombeiro","buyUrl":"https://pay.hotmart.com/J106471007U","includes":"","link":"","btnLabel":"Saiba mais"},{"slug":"cbmba","title":"Curso completo CBMBA","featured":true,"published":true,"image":"uploads/curso-cbmba.jpg","cover":"","tags":"Nordeste, Bahia","text":"Preparatório completo para o concurso do Corpo de Bombeiros Militar da Bahia, com videoaulas, PDFs, quizzes e simulados.","body":"## Curso completo CBMBA\nPreparatório completo para o concurso do Corpo de Bombeiros Militar da Bahia, com conteúdo direcionado ao edital.\n\n### O que você encontra no curso\n- Videoaulas focadas no edital\n- PDFs para estudar e revisar\n- Quizzes para fixar o conteúdo\n- Simulados no formato da prova\n- Grupo de estudos gratuito no WhatsApp\n\n**Público-alvo:** candidatos ao concurso do Corpo de Bombeiros Militar da Bahia.","oldPrice":"De R$ 997,00","price":"12x de R$ 41,06","installments":"ou R$ 397,00 à vista","offerLabel":"","buyLabel":"Quero ser bombeiro","buyUrl":"https://pay.hotmart.com/V106509648X","includes":"","link":"","btnLabel":"Saiba mais"},{"slug":"cbmma","title":"Curso completo CBMMA","featured":true,"published":true,"image":"uploads/curso-cbmma.jpg","cover":"","tags":"Nordeste, Maranhão","text":"Preparatório completo para o concurso do Corpo de Bombeiros Militar do Maranhão, com videoaulas, PDFs, quizzes e simulados.","body":"## Curso completo CBMMA\nPreparatório completo para o concurso do Corpo de Bombeiros Militar do Maranhão, com conteúdo direcionado ao edital.\n\n### O que você encontra no curso\n- Videoaulas focadas no edital\n- PDFs para estudar e revisar\n- Quizzes para fixar o conteúdo\n- Simulados no formato da prova\n- Grupo de estudos gratuito no WhatsApp\n\n**Público-alvo:** candidatos ao concurso do Corpo de Bombeiros Militar do Maranhão.","oldPrice":"De R$ 997,00","price":"12x de R$ 30,72","installments":"ou R$ 297,00 à vista","offerLabel":"","buyLabel":"Quero ser bombeiro","buyUrl":"https://pay.hotmart.com/L106509732P","includes":"","link":"","btnLabel":"Saiba mais"},{"slug":"cbmpr","title":"Curso completo CBMPR","featured":true,"published":true,"image":"uploads/curso-cbmpr.jpg","cover":"","tags":"Sul, Paraná","text":"Preparatório completo para o concurso do Corpo de Bombeiros Militar do Paraná, com videoaulas, PDFs, quizzes e simulados.","body":"## Curso completo CBMPR\nPreparatório completo para o concurso do Corpo de Bombeiros Militar do Paraná, com conteúdo direcionado ao edital.\n\n### O que você encontra no curso\n- Videoaulas focadas no edital\n- PDFs para estudar e revisar\n- Quizzes para fixar o conteúdo\n- Simulados no formato da prova\n- Grupo de estudos gratuito no WhatsApp\n\n**Público-alvo:** candidatos ao concurso do Corpo de Bombeiros Militar do Paraná.","oldPrice":"","price":"R$ 997,00","installments":"valor regular · condição especial no lançamento","offerLabel":"Em breve","buyLabel":"Entrar na lista de espera","buyUrl":"https://app.missao193.com.br/vip/grupo-de-estudos-cbmpr","includes":"","link":"","btnLabel":"Saiba mais"}],"news":[{"slug":"grupos-de-estudo-gratuitos-bombeiro","title":"Grupos de estudo gratuitos: encontre o do seu Bombeiro","subtitle":"A Missão 193 mantém grupos no WhatsApp por estado e por região, com acesso gratuito e materiais complementares.","tags":"Grupos gratuitos","date":"2026-11-23","author":"Equipe Missão 193","featured":true,"published":true,"image":"uploads/capa-noticia-grupos.jpg","body":"Quem está se preparando para o concurso de Bombeiro Militar pode estudar junto com outros candidatos do mesmo estado nos grupos gratuitos da Missão 193.\n\n## Grupos disponíveis\n- [CBMMG 2027](https://app.missao193.com.br/vip/CBMMG-2027)\n- [CBMGO](https://app.missao193.com.br/vip/grupos-cbmgo)\n- [CBMDF](https://app.missao193.com.br/vip/cbmdf-grupos-gratuitos)\n- [CBMRR](https://app.missao193.com.br/vip/grupos-cbmrr)\n- [CBMPE](https://app.missao193.com.br/vip/grupo-de-estudos-cbmpe)\n- [CBMAL](https://app.missao193.com.br/vip/grupo-de-estudos-cbmal)\n- [CBMBA](https://app.missao193.com.br/vip/grupo-de-estudos-cbmba)\n- [CBMMA](https://app.missao193.com.br/vip/grupo-de-estudos-cbmma)\n- [CBMPR](https://app.missao193.com.br/vip/grupo-de-estudos-cbmpr)\n- [Nordeste](https://app.missao193.com.br/vip/grupos-cbmnordeste)\n- [Sudeste](https://app.missao193.com.br/vip/grupo-sudeste)\n- [Região Sul](https://app.missao193.com.br/vip/regiao-sul)\n\n## Como entrar\nClique no grupo do seu estado ou região e siga as instruções da página para entrar no WhatsApp. O acesso é gratuito."},{"slug":"cursos-completos-bombeiro-militar","title":"Conheça os cursos completos da Missão 193 para Bombeiro Militar","subtitle":"São 8 cursos preparatórios, um para cada Corpo de Bombeiros, com videoaulas, PDFs, quizzes e simulados.","tags":"Cursos","date":"2026-11-22","author":"Equipe Missão 193","featured":true,"published":true,"image":"uploads/capa-noticia-cursos.jpg","body":"A Missão 193 tem um curso completo para cada concurso de Bombeiro Militar, com conteúdo direcionado ao edital de cada estado.\n\n## Cursos disponíveis\n- [Curso completo CBMMG](curso/cbmmg)\n- [Curso completo CBMGO](curso/cbmgo)\n- [Curso completo CBMRR](curso/cbmrr)\n- [Curso completo CBMPE](curso/cbmpe)\n- [Curso completo CBMAL](curso/cbmal)\n- [Curso completo CBMBA](curso/cbmba)\n- [Curso completo CBMMA](curso/cbmma)\n- [Curso completo CBMPR](curso/cbmpr)\n\n## O que todos os cursos incluem\n- Videoaulas\n- PDFs\n- Quizzes\n- Simulados\n\nFicou com dúvida sobre qual curso escolher? [Fale com o nosso comercial](https://wa.me/message/VLF22COAOO2MB1)."}],"pages":{"courses":{"title":"Cursos disponíveis","subtitle":"Encontre o curso do seu Corpo de Bombeiros e comece sua preparação.","filterTitle":"Filtrar por região"},"news":{"title":"Últimas notícias","subtitle":"Novidades sobre os concursos de Bombeiro Militar e sobre a Missão 193.","badge":"Blog e notícias","featuredTitle":"Notícias em destaque","author":"Equipe Missão 193"},"course":{"aboutTitle":"Sobre o curso","benefitsTitle":"Por que escolher a Missão 193?","benefits":[{"icon":"play","title":"Videoaulas","text":"Aulas focadas no edital, para assistir no seu ritmo."},{"icon":"file","title":"PDFs","text":"Material escrito para estudar e revisar."},{"icon":"puzzle","title":"Quiz","text":"Questões rápidas para fixar o conteúdo."},{"icon":"target","title":"Simulados","text":"Treine no formato da prova."}],"guarantee":"","offerLabel":"🔥 Condição especial","buyLabel":"Quero ser bombeiro","includes":"Videoaulas\nPDFs\nQuizzes\nSimulados\nGrupo de estudos gratuito no WhatsApp","secureText":"Pagamento seguro pela Hotmart","othersTitle":"Outros cursos","ctaTitle":"Pronto para começar a sua {Missão}?","ctaText":"Garanta sua vaga e comece a estudar hoje mesmo."}}};</script>
+<script>/* Ícones (traço 24x24) usados no site e no painel. Para adicionar um ícone, inclua uma entrada aqui. */
+window.ICONS = {
+  play: '<circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z"/>',
+  file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>',
+  map: '<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M11 7l-5 9M13 7l5 9M7.5 18h9"/>',
+  calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/>',
+  cards: '<rect x="2" y="6" width="15" height="14" rx="2"/><path d="M7 2h13a2 2 0 0 1 2 2v13"/>',
+  pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+  puzzle: '<path d="M9 3h6v3a2 2 0 1 0 4 0V3h2v18H3V3h2v3a2 2 0 1 0 4 0z"/>',
+  chart: '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
+  trophy: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+  bell: '<path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',
+  check: '<path d="M20 6L9 17l-5-5"/>',
+  star: '<path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
+  users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5V22h16"/>',
+  award: '<circle cx="12" cy="8" r="6"/><path d="M8.2 13.4L7 22l5-3 5 3-1.2-8.6"/>',
+  heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/>',
+  rocket: '<path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2-.1-2.8a2.1 2.1 0 0 0-2.9-.2z"/><path d="M12 15l-3-3a22 22 0 0 1 2-4A13 13 0 0 1 22 2c0 2.7-.8 7.5-6 11a22 22 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/>',
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  phone: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>',
+  chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  bolt: '<path d="M13 2L3 14h9l-1 8 10-12h-9z"/>',
+  target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  gift: '<path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  headset: '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/>',
+  send: '<path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/>',
+  whatsapp: '<path d="M3 21l1.7-5A9 9 0 1 1 8 19.3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-.9.8a4 4 0 0 1-2.2-2.2l.8-.9-1-2z"/>',
+  instagram: '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+  youtube: '<path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.8 4 12 4 12 4s-6.8 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.2 20 12 20 12 20s6.8 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6z"/><path d="M10 15.5l5.5-3.5L10 8.5z"/>',
+  facebook: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+  tiktok: '<path d="M9 12a4 4 0 1 0 4 4V2c.5 2.5 2.5 4.5 5 5"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>'
+};
+window.icon = function (name, size) {
+  var p = window.ICONS[name] || window.ICONS.star;
+  size = size || 20;
+  return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
+};
+</script>
+<script>/* Renderiza o site a partir do JSON de conteúdo (window.SITE_DATA).
+   Páginas: home, cursos, curso/{slug}, noticias, noticia/{slug} (window.SITE_PAGE vem do index.php).
+   No modo prévia (?preview=1) o painel envia conteúdo e página por postMessage. */
+(function () {
+  'use strict';
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  // Texto com quebras de linha e {destaque em gradiente}
+  function rich(s) {
+    return esc(s).replace(/\{([^}]+)\}/g, '<span class="grad">$1</span>').replace(/\n/g, '<br>');
+  }
+  function paras(s) {
+    return String(s || '').split(/\n\s*\n/).filter(Boolean).map(function (p) { return '<p>' + rich(p.trim()) + '</p>'; }).join('');
+  }
+  // Texto longo: ## título, ### subtítulo, - lista, **negrito**, [link](url), ![imagem](url)
+  function md(src) {
+    function inline(t) {
+      return esc(t)
+        .replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, function (m, alt, u) { return '<img src="' + url(u) + '" alt="' + alt + '" loading="lazy">'; })
+        .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, t2, u) { return '<a href="' + url(u) + '"' + ext(u) + '>' + t2 + '</a>'; })
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    }
+    var out = [], listOpen = false, para = [];
+    function flush() { if (para.length) { out.push('<p>' + para.map(inline).join('<br>') + '</p>'); para = []; } }
+    function closeList() { if (listOpen) { out.push('</ul>'); listOpen = false; } }
+    String(src || '').split('\n').forEach(function (line) {
+      var l = line.trim();
+      if (!l) { flush(); closeList(); return; }
+      var m;
+      if ((m = /^(#{2,3})\s+(.*)$/.exec(l))) { flush(); closeList(); out.push('<h' + m[1].length + '>' + inline(m[2]) + '</h' + m[1].length + '>'); return; }
+      if ((m = /^[-*]\s+(.*)$/.exec(l))) { flush(); if (!listOpen) { out.push('<ul>'); listOpen = true; } out.push('<li>' + inline(m[1]) + '</li>'); return; }
+      closeList(); para.push(l);
+    });
+    flush(); closeList();
+    return out.join('');
+  }
+  var D, P; // dados e página atuais
+  var PREVIEW = /[?&]preview=1/.test(location.search); // no painel, rascunhos também aparecem
+  function url(u) {
+    u = String(u || '').trim();
+    if (!u) return '#';
+    if (u === 'whatsapp') {
+      var n = String(D.site.whatsapp || '').replace(/\D/g, '');
+      return 'https://wa.me/' + n + (D.site.whatsappMessage ? '?text=' + encodeURIComponent(D.site.whatsappMessage) : '');
+    }
+    if (/^(https?:|mailto:|tel:|#|\/|\.\/|\.\.\/)/i.test(u) || !/^[a-z][a-z0-9+.-]*:/i.test(u)) return esc(u);
+    return '#'; // bloqueia javascript: e afins
+  }
+  function ext(u) { return /^https?:/i.test(String(u)) || u === 'whatsapp' ? ' target="_blank" rel="noopener"' : ''; }
+  function a(href, cls, inner) { return '<a class="' + cls + '" href="' + url(href) + '"' + ext(href) + '>' + inner + '</a>'; }
+  function btn(label, href, cls, ic) {
+    if (!label) return '';
+    return a(href, 'btn ' + cls, (ic ? icon(ic, 18) : '') + '<span>' + esc(label) + '</span>');
+  }
+  function img(src, alt, cls, eager) {
+    return src ? '<img class="' + (cls || '') + '" src="' + esc(src) + '" alt="' + esc(alt || '') + '"' + (eager ? '' : ' loading="lazy"') + '>' : '';
+  }
+  function ph(label, cls) { return '<div class="ph ' + (cls || '') + '"><span>' + esc(label || '') + '</span></div>'; }
+  function badge(t, cls) { return t ? '<span class="badge ' + (cls || '') + '">' + esc(t) + '</span>' : ''; }
+  function head(s, dark) {
+    return '<div class="sec-head' + (dark ? ' on-dark' : '') + '">' + badge(s.badge) +
+      (s.title ? '<h2>' + rich(s.title) + '</h2>' : '') +
+      (s.subtitle || s.text ? '<p>' + rich(s.subtitle || s.text) + '</p>' : '') + '</div>';
+  }
+  function list(x) { return Array.isArray(x) ? x : []; }
+  function tagsOf(x) { return String(x.tags || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean); }
+  function stars(n) { n = Math.max(0, Math.min(5, parseInt(n, 10) || 5)); var s = ''; for (var i = 0; i < n; i++) s += icon('star', 16); return '<div class="stars">' + s + '</div>'; }
+  var MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  function fmtDate(d) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || '');
+    return m ? parseInt(m[3], 10) + ' de ' + MESES[parseInt(m[2], 10) - 1] + ' de ' + m[1] : esc(d || '');
+  }
+  function pages() { return D.pages || {}; }
+  function courses() { return list(D.courses).filter(function (c) { return c.title && (PREVIEW || c.published !== false); }); }
+  function news() {
+    return list(D.news).filter(function (n) { return n.title && (PREVIEW || n.published !== false); })
+      .slice().sort(function (x, y) { return String(y.date || '').localeCompare(String(x.date || '')); });
+  }
+  function courseHref(c) { return c.link || (c.slug ? 'curso/' + c.slug : '#'); }
+  function newsHref(n) { return n.slug ? 'noticia/' + n.slug : '#'; }
+  function filterBar(tags) {
+    if (tags.length < 2) return '';
+    return '<div class="filter"><button class="chip on" data-f="">Todos</button>' +
+      tags.map(function (t) { return '<button class="chip" data-f="' + esc(t) + '">' + esc(t) + '</button>'; }).join('') + '</div>';
+  }
+  function allTags(items) {
+    var t = [];
+    items.forEach(function (x) { tagsOf(x).forEach(function (g) { if (t.indexOf(g) < 0) t.push(g); }); });
+    return t;
+  }
+  // Categorias em dois níveis: a 1ª etiqueta é a principal (ex.: região), as seguintes ficam dentro dela (ex.: estado)
+  function catTree(items) {
+    var tree = {};
+    items.forEach(function (x) {
+      var t = tagsOf(x); if (!t.length) return;
+      var c = tree[t[0]] || (tree[t[0]] = { n: 0, subs: {} }); c.n++;
+      t.slice(1).forEach(function (sub) { c.subs[sub] = (c.subs[sub] || 0) + 1; });
+    });
+    return tree;
+  }
+  function sortPt(a, b) { return a.localeCompare(b, 'pt-BR'); }
+  function catSidebar(items, title) {
+    var tree = catTree(items), cats = Object.keys(tree).sort(sortPt);
+    if (!cats.length) return '';
+    return '<aside class="cat-box"><h3>' + icon('target', 18) + esc(title || 'Filtrar por categoria') + '</h3>' +
+      '<button type="button" class="cat-all on" data-f="">' + icon('cards', 16) + 'Todos os cursos<span>' + items.length + '</span></button><ul class="cat-list">' +
+      cats.map(function (c) {
+        var subs = Object.keys(tree[c].subs).sort(sortPt);
+        return '<li><button type="button" class="cat" data-f="' + esc(c) + '"><i></i>' + esc(c) + '<span>' + tree[c].n + '</span></button>' +
+          (subs.length ? '<ul>' + subs.map(function (sb) { return '<li><button type="button" class="cat sub" data-f="' + esc(sb) + '"><i></i>' + esc(sb) + '<span>' + tree[c].subs[sb] + '</span></button></li>'; }).join('') + '</ul>' : '') + '</li>';
+      }).join('') + '</ul></aside>';
+  }
+  function gridClass(s) {
+    return (s.layout === 'imagens' ? 'tile-grid' : 'grid g3') + (s.imageRatio === '1:1' ? ' sq' : s.imageRatio === '16:9' ? ' wide' : '') + ' focus-' + (s.imageFocus || 'centro') + ' course-grid';
+  }
+  function courseCard(c, s) {
+    var tg = tagsOf(c), href = courseHref(c);
+    if (s.layout === 'imagens') return '<article class="course tile" data-tags="' + esc(tg.join('|')) + '">' + a(href, 'tile-link', c.image ? img(c.image, c.title) : ph(c.title, 'tile-ph')) + '</article>';
+    return '<article class="course" data-tags="' + esc(tg.join('|')) + '"><a class="course-img" href="' + url(href) + '"' + ext(href) + '>' +
+      (c.image ? img(c.image, c.title) : ph(c.title, 'course-ph')) + '</a><div class="course-body">' +
+      (tg.length ? '<div class="tags">' + tg.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' : '') +
+      '<h3>' + esc(c.title) + '</h3><p>' + esc(c.text) + '</p>' +
+      a(href, 'more', esc(c.btnLabel || 'Saiba mais') + ' ' + icon('arrow', 16)) + '</div></article>';
+  }
+  function newsCard(n, big) {
+    var tg = tagsOf(n);
+    return '<a class="post-card' + (big ? ' big' : '') + '" href="' + url(newsHref(n)) + '"><div class="post-img">' +
+      (n.image ? img(n.image, n.title) : '<div class="ph"></div>') + (n.featured ? '<span class="flag">' + icon('star', 12) + 'Destaque</span>' : '') + '</div>' +
+      '<div class="post-body">' + (tg.length ? '<span class="post-tag">' + esc(tg[0]) + '</span>' : '') + '<h3>' + esc(n.title) + '</h3>' +
+      (n.subtitle ? '<p>' + esc(n.subtitle) + '</p>' : '') + '<span class="post-date">' + icon('calendar', 14) + fmtDate(n.date) + '</span></div></a>';
+  }
+  function crumbs(items) {
+    return '<nav class="crumbs">' + items.map(function (x, i) {
+      return i < items.length - 1 ? '<a href="' + url(x[1]) + '">' + esc(x[0]) + '</a><span>›</span>' : '<em>' + esc(x[0]) + '</em>';
+    }).join('') + '</nav>';
+  }
+  function pageHero(title, sub, crumbList, extra) {
+    return '<section class="page-hero"><div class="glow g1"></div><div class="wrap center">' + (crumbList ? crumbs(crumbList) : '') +
+      (extra || '') + '<h1>' + rich(title) + '</h1>' + (sub ? '<p>' + rich(sub) + '</p>' : '') + '</div></section>';
+  }
+
+  /* ---------- seções da página inicial ---------- */
+  var R = {};
+
+  R.hero = function (s) {
+    var bg = s.bgImage ? ' has-bg" style="--hero-bg:url(&quot;' + esc(s.bgImage) + '&quot;);--hero-bg-m:url(&quot;' + esc(s.bgImageMobile || s.bgImage) + '&quot;)' : '';
+    var side = s.image ? img(s.image, s.imageCaption, 'hero-img focus-' + (s.imageFocus || 'centro'), true) : (s.bgImage ? '' : ph(s.imageCaption || 'Sua imagem aqui', 'hero-ph'));
+    return '<section class="hero' + bg + '" id="topo"><div class="glow g1"></div><div class="glow g2"></div><div class="wrap hero-grid' + (side ? '' : ' solo') + '">' +
+      '<div class="hero-copy">' +
+      (list(s.chips).length ? '<div class="hero-chips">' + list(s.chips).map(function (c) { return '<span>' + icon(c.icon, 14) + esc(c.text) + '</span>'; }).join('') + '</div>' : '') +
+      (s.emblem ? img(s.emblem, '', 'hero-emblem', true) : '') +
+      (s.badge ? '<span class="pill">' + icon('award', 14) + esc(s.badge) + '</span>' : '') +
+      '<h1>' + rich(s.title) + '</h1><p class="lead">' + rich(s.text) + '</p>' +
+      '<div class="actions">' + btn(s.btn1Label, s.btn1Url, 'btn-primary', 'send') + btn(s.btn2Label, s.btn2Url, 'btn-ghost', 'users') + btn(s.btn3Label, s.btn3Url, 'btn-green', 'whatsapp') + '</div>' +
+      (list(s.stats).length ? '<div class="stats">' + list(s.stats).map(function (x) {
+        return '<div><strong>' + esc(x.value) + '</strong><span>' + esc(x.label) + '</span></div>';
+      }).join('') + '</div>' : '') + '</div>' +
+      (side ? '<div class="hero-media">' + side + '</div>' : '') +
+      '</div></section>';
+  };
+
+  R.banner = function (s) {
+    if (!s.image) return '';
+    return '<section class="banner"><div class="wrap">' + a(s.url, 'banner-link',
+      '<picture>' + (s.imageMobile ? '<source media="(max-width:700px)" srcset="' + esc(s.imageMobile) + '">' : '') + img(s.image, s.alt) + '</picture>') + '</div></section>';
+  };
+
+  R.courses = function (s) {
+    var items = courses();
+    if (s.onlyFeatured) items = items.filter(function (c) { return c.featured; });
+    var lim = parseInt(s.limit, 10);
+    if (lim > 0) items = items.slice(0, lim);
+    var filter = s.showFilter ? filterBar(Object.keys(catTree(items)).sort(sortPt)) : '';
+    return '<section class="courses" id="cursos"><div class="wrap">' + head(s) + filter + '<div class="' + gridClass(s) + '">' +
+      items.map(function (c) { return courseCard(c, s); }).join('') + '</div>' +
+      (s.btnLabel ? '<div class="center">' + btn(s.btnLabel, s.btnUrl || 'cursos', 'btn-outline') + '</div>' : '') + '</div></section>';
+  };
+
+  R.groups = function (s) {
+    return '<section class="groups dark-sec" id="grupos"><div class="wrap">' +
+      (D.site.logo ? '<div class="center">' + img(D.site.logo, D.site.name, 'groups-logo') + '</div>' : '') +
+      head({ badge: s.badge, title: s.title, text: s.text }, true) + '<div class="state-grid' + (list(s.items).some(function (g) { return g.image; }) ? ' posters' : '') + '">' +
+      list(s.items).map(function (g) {
+        if (g.image) return a(g.url, 'state poster', img(g.image, g.name));
+        return a(g.url, 'state', '<strong>' + esc(g.code) + '</strong><span>' + esc(g.name) + '</span>');
+      }).join('') + '</div></div></section>';
+  };
+
+  R.features = function (s) {
+    var tones = ['t1', 't2', 't3', 't4'];
+    return '<section class="features dark-sec grad-sec" id="plataforma"><div class="wrap">' + head({ badge: s.badge, title: s.title, text: s.text }, true) +
+      '<div class="grid g3">' + list(s.items).map(function (f, i) {
+        return '<div class="feat"><div class="feat-ic ' + tones[i % 4] + '">' + icon(f.icon, 22) + '</div><h3>' + esc(f.title) + '</h3><p>' + esc(f.text) + '</p></div>';
+      }).join('') + '</div>' + (s.btnLabel ? '<div class="center">' + btn(s.btnLabel, s.btnUrl, 'btn-primary', 'rocket') + '</div>' : '') + '</div></section>';
+  };
+
+  R.about = function (s) {
+    return '<section class="about" id="sobre"><div class="wrap"><div class="about-grid"><div class="about-media">' +
+      (s.image ? img(s.image, s.title, 'about-img focus-' + (s.imageFocus || 'centro')) : ph('Sua foto aqui', 'about-ph')) +
+      (s.imageBadgeTitle ? '<div class="float-card">' + icon('award', 20) + '<div><strong>' + esc(s.imageBadgeTitle) + '</strong><span>' + esc(s.imageBadgeText) + '</span></div></div>' : '') +
+      '</div><div class="about-copy">' + badge(s.badge) + '<h2>' + rich(s.title) + '</h2>' + paras(s.text) +
+      (list(s.bullets).length ? '<ul class="checks">' + list(s.bullets).map(function (b) { return '<li>' + icon('check', 16) + esc(b.text) + '</li>'; }).join('') + '</ul>' : '') +
+      (s.quote ? '<blockquote>“' + esc(s.quote) + '”</blockquote>' : '') + btn(s.btnLabel, s.btnUrl, 'btn-primary') + '</div></div>' +
+      (list(s.stats).length ? '<div class="about-stats">' + list(s.stats).map(function (x) { return '<div><strong>' + esc(x.value) + '</strong><span>' + esc(x.label) + '</span></div>'; }).join('') + '</div>' : '') +
+      '</div></section>';
+  };
+
+  R.imageLinks = function (s) {
+    var items = list(s.items).filter(function (x) { return x.image; });
+    if (!items.length) return '';
+    return '<section class="img-links" id="links"><div class="wrap">' + (s.title || s.badge ? head(s) : '') + '<div class="img-link-grid">' +
+      items.map(function (x) { return a(x.url, 'img-link', img(x.image, x.alt)); }).join('') + '</div></div></section>';
+  };
+
+  R.testimonials = function (s) {
+    var items = list(s.items);
+    var score = '<div class="testi-score"><span class="q">“</span><strong>' + esc(s.rating) + '</strong>' + (s.showStars === false ? '' : stars(5)) + '<em>' + esc(s.ratingLabel) + '</em><p>' + esc(s.ratingText) + '</p></div>';
+    var hasPrints = items.some(function (t) { return t.image; });
+    if (hasPrints) {
+      return '<section class="testimonials" id="depoimentos"><div class="wrap">' + head(s) + '<div class="testi-wall">' + score +
+        items.map(function (t) {
+          return '<figure class="testi-print">' + (t.image ? '<button type="button" class="print-btn" data-zoom="' + esc(t.image) + '" aria-label="Ampliar print">' + img(t.image, 'Print da mensagem: ' + (t.name || '')) + '<span class="zoom-ic">' + icon('search', 16) + '</span></button>' : '') +
+            '<figcaption>' + (t.text && !t.image ? '<p>' + esc(t.text) + '</p>' : '') + '<strong>' + esc(t.name) + '</strong><span>' + esc(t.role) + '</span></figcaption></figure>';
+        }).join('') + '</div>' + (s.note ? '<p class="testi-note">' + icon('shield', 14) + esc(s.note) + '</p>' : '') + '</div></section>';
+    }
+    return '<section class="testimonials" id="depoimentos"><div class="wrap">' + head(s) + '<div class="testi-grid">' + score +
+      items.map(function (t) {
+        return '<div class="testi">' + (parseInt(t.stars, 10) > 0 ? stars(t.stars) : '') + '<p>' + esc(t.text) + '</p><div class="who">' +
+          (t.photo ? img(t.photo, t.name, 'avatar') : '<span class="avatar ini">' + esc(String(t.name || '?').charAt(0)) + '</span>') +
+          '<div><strong>' + esc(t.name) + '</strong><span>' + esc(t.role) + '</span></div></div></div>';
+      }).join('') + '</div></div></section>';
+  };
+
+  R.news = function (s) {
+    var items = news().slice(0, parseInt(s.limit, 10) || 4);
+    if (!items.length) return '';
+    return '<section class="news" id="noticias"><div class="wrap"><h2 class="news-title">' + rich(s.title) + '</h2><div class="grid g4">' +
+      items.map(function (n) {
+        return '<a class="news-card" href="' + url(newsHref(n)) + '">' + (n.image ? img(n.image, n.title) : '<div class="ph news-ph"></div>') +
+          '<div class="news-body"><h3>' + esc(n.title) + '</h3><span>' + icon('clock', 14) + fmtDate(n.date) + '</span></div></a>';
+      }).join('') + '</div>' + (s.btnLabel ? '<div class="center">' + btn(s.btnLabel, s.btnUrl || 'noticias', 'btn-outline') + '</div>' : '') + '</div></section>';
+  };
+
+  R.results = function (s) {
+    var items = list(s.items);
+    if (!items.length) return '';
+    return '<section class="results dark-sec" id="aprovados"><div class="glow g1"></div><div class="wrap">' + head({ badge: s.badge, title: s.title, text: s.text }, true) +
+      '<div class="results-grid">' + items.map(function (r) {
+        var inner = '<strong class="r-num">' + esc(r.value) + '</strong><span class="r-label">' + esc(r.label) + '</span>' +
+          (r.detail ? '<p>' + esc(r.detail) + '</p>' : '') + '<div class="r-foot">' + (r.date ? '<em>' + icon('calendar', 13) + esc(r.date) + '</em>' : '') +
+          (r.url ? '<span class="r-link">' + icon('instagram', 14) + esc(r.linkLabel || 'Ver post') + '</span>' : '') + '</div>';
+        return r.url ? a(r.url, 'result', inner) : '<div class="result">' + inner + '</div>';
+      }).join('') + '</div>' + (s.note ? '<p class="r-note">' + esc(s.note) + '</p>' : '') +
+      (s.btnLabel ? '<div class="center">' + btn(s.btnLabel, s.btnUrl, 'btn-primary', 'arrow') + '</div>' : '') + '</div></section>';
+  };
+
+  R.teachers = function (s) {
+    var items = list(s.items).filter(function (t) { return t.name; });
+    if (!items.length) return '';
+    return '<section class="teachers" id="professores"><div class="wrap">' + head(s) + '<div class="carousel profiles">' +
+      '<button type="button" class="car-btn prev" aria-label="Anterior">' + icon('arrow', 18) + '</button>' +
+      '<div class="car-track">' + items.map(function (t) {
+        var ini = String(t.name).split(/\s+/).map(function (w) { return w.charAt(0); }).slice(0, 2).join('');
+        return '<div class="profile"><span class="ring">' + (t.photo ? img(t.photo, t.name, 'avatar-img') : '<span class="avatar-img ini">' + esc(ini) + '</span>') + '</span>' +
+          '<strong>' + esc(t.name) + '</strong>' + (t.subject ? '<span>' + esc(t.subject) + '</span>' : '') + '</div>';
+      }).join('') + '</div>' +
+      '<button type="button" class="car-btn next" aria-label="Próximo">' + icon('arrow', 18) + '</button></div>' +
+      (s.note ? '<p class="profiles-note">' + esc(s.note) + '</p>' : '') + '</div></section>';
+  };
+
+  R.cta = function (s) {
+    return '<section class="cta dark-sec" id="contato"><div class="wrap narrow center">' + (s.badge ? '<span class="eyebrow">' + esc(s.badge) + '</span>' : '') +
+      '<h2>' + rich(s.title) + '</h2><p>' + rich(s.text) + '</p><div class="actions center-x">' +
+      btn(s.btn1Label, s.btn1Url, 'btn-violet', 'send') + btn(s.btn2Label, s.btn2Url, 'btn-green', 'whatsapp') + '</div></div></section>';
+  };
+
+  /* ---------- páginas internas ---------- */
+  var PAGES = {};
+
+  PAGES.home = function () {
+    var out = '';
+    list(D.order).forEach(function (key) {
+      var s = (D.sections || {})[key];
+      if (s && s.enabled !== false && R[key]) out += R[key](s);
+    });
+    return out;
+  };
+
+  PAGES.courses = function () {
+    var cfg = pages().courses || {}, items = courses(), home = (D.sections || {}).courses || {};
+    var style = { layout: 'completo', imageRatio: home.imageRatio, imageFocus: home.imageFocus };
+    return pageHero(cfg.title || 'Cursos disponíveis', cfg.subtitle, [['Início', './'], ['Cursos', '']]) +
+      '<section class="courses list-page"><div class="wrap courses-layout">' + catSidebar(items, cfg.filterTitle) +
+      '<div class="courses-main"><div class="' + gridClass(style) + '">' + items.map(function (c) { return courseCard(c, style); }).join('') + '</div>' +
+      (items.length ? '' : '<p class="empty-note">Nenhum curso cadastrado ainda.</p>') + '</div></div></section>';
+  };
+
+  PAGES.course = function () {
+    var c = courses().filter(function (x) { return x.slug === P.slug; })[0];
+    if (!c) return PAGES.notfound();
+    var cfg = pages().course || {}, tg = tagsOf(c), home = (D.sections || {}).courses || {};
+    var buy = c.buyUrl || c.link || 'whatsapp', buyLabel = c.buyLabel || cfg.buyLabel || 'Quero me matricular';
+    var includes = String(c.includes || cfg.includes || '').split('\n').map(function (x) { return x.trim(); }).filter(Boolean);
+    var benefits = list(cfg.benefits);
+    var others = courses().filter(function (x) { return x !== c; }).slice(0, 3);
+    var style = { layout: 'completo', imageRatio: home.imageRatio, imageFocus: home.imageFocus };
+    return '<section class="course-hero"' + (c.cover ? ' style="--cover:url(&quot;' + esc(c.cover) + '&quot;)"' : '') + '><div class="wrap">' +
+      crumbs([['Início', './'], ['Cursos', 'cursos'], [c.title, '']]) +
+      '<div class="course-hero-grid"><div>' + (tg.length ? '<div class="tags">' + tg.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' : '') +
+      '<h1>' + esc(c.title) + '</h1>' + (c.text ? '<p class="lead">' + esc(c.text) + '</p>' : '') + '</div>' +
+      (c.image ? '<div class="course-hero-img focus-' + esc(home.imageFocus || 'centro') + '">' + img(c.image, c.title, '', true) + '</div>' : '') + '</div></div></section>' +
+      '<section class="course-main"><div class="wrap course-layout"><div class="course-content">' +
+      (c.body ? '<div class="box prose"><h2 class="box-title">' + icon('book', 20) + esc(cfg.aboutTitle || 'Sobre o curso') + '</h2>' + md(c.body) + '</div>' : '') +
+      (benefits.length ? '<div class="box"><h2 class="box-title">' + icon('award', 20) + esc(cfg.benefitsTitle || 'Por que escolher este curso?') + '</h2><div class="benefits">' +
+        benefits.map(function (b) { return '<div class="benefit"><span class="feat-ic t1">' + icon(b.icon, 20) + '</span><div><strong>' + esc(b.title) + '</strong><p>' + esc(b.text) + '</p></div></div>'; }).join('') + '</div>' +
+        (cfg.guarantee ? '<div class="guarantee">' + icon('shield', 22) + '<p>' + esc(cfg.guarantee) + '</p></div>' : '') + '</div>' : '') +
+      '</div><aside class="buy-box"><div class="buy-inner">' +
+      (c.offerLabel || cfg.offerLabel ? '<span class="offer">' + esc(c.offerLabel || cfg.offerLabel) + '</span>' : '') +
+      (c.oldPrice ? '<s class="old">' + esc(c.oldPrice) + '</s>' : '') + (c.price ? '<strong class="price">' + esc(c.price) + '</strong>' : '') +
+      (c.installments ? '<span class="inst">' + esc(c.installments) + '</span>' : '') +
+      btn(buyLabel, buy, 'btn-primary btn-block', 'send') +
+      (includes.length ? '<p class="inc-title">O que está incluso:</p><ul class="checks one">' + includes.map(function (i) { return '<li>' + icon('check', 16) + esc(i) + '</li>'; }).join('') + '</ul>' : '') +
+      (cfg.secureText ? '<p class="secure">' + icon('shield', 14) + esc(cfg.secureText) + '</p>' : '') +
+      '</div></aside></div></section>' +
+      (cfg.ctaTitle ? '<section class="cta dark-sec"><div class="wrap narrow center"><h2>' + rich(cfg.ctaTitle) + '</h2>' + (cfg.ctaText ? '<p>' + rich(cfg.ctaText) + '</p>' : '') +
+        '<div class="actions center-x">' + btn(buyLabel, buy, 'btn-violet', 'send') + '</div></div></section>' : '') +
+      (others.length ? '<section class="courses"><div class="wrap">' + head({ title: cfg.othersTitle || 'Outros cursos' }) + '<div class="' + gridClass(style) + '">' +
+        others.map(function (x) { return courseCard(x, style); }).join('') + '</div></div></section>' : '');
+  };
+
+  PAGES.news = function () {
+    var cfg = pages().news || {}, items = news(), feat = items.filter(function (n) { return n.featured; }).slice(0, 3);
+    return pageHero(cfg.title || 'Últimas notícias', cfg.subtitle, [['Início', './'], ['Notícias', '']], cfg.badge ? '<span class="pill">' + icon('file', 14) + esc(cfg.badge) + '</span>' : '') +
+      (feat.length ? '<section class="posts featured"><div class="wrap">' + head({ badge: 'Destaques', title: cfg.featuredTitle || 'Notícias em destaque' }) +
+        '<div class="grid g3">' + feat.map(function (n) { return newsCard(n, true); }).join('') + '</div></div></section>' : '') +
+      '<section class="posts"><div class="wrap">' + (feat.length ? head({ title: 'Todas as notícias' }) : '') + filterBar(allTags(items)) +
+      '<div class="grid g3 post-grid">' + items.map(function (n) { return '<div class="post-wrap" data-tags="' + esc(tagsOf(n).join('|')) + '">' + newsCard(n) + '</div>'; }).join('') + '</div>' +
+      (items.length ? '' : '<p class="empty-note">Nenhuma notícia publicada ainda.</p>') + '</div></section>';
+  };
+
+  PAGES.article = function () {
+    var n = news().filter(function (x) { return x.slug === P.slug; })[0];
+    if (!n) return PAGES.notfound();
+    var tg = tagsOf(n), words = String(n.body || '').split(/\s+/).length, mins = Math.max(1, Math.round(words / 200));
+    var author = n.author || (pages().news || {}).author || D.site.name;
+    var related = news().filter(function (x) { return x !== n; }).slice(0, 3);
+    var share = encodeURIComponent(location.href);
+    return '<article class="article"><div class="wrap narrow">' + crumbs([['Início', './'], ['Notícias', 'noticias'], [n.title, '']]) +
+      (tg.length ? '<div class="tags">' + tg.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' : '') +
+      '<h1>' + esc(n.title) + '</h1>' + (n.subtitle ? '<p class="lead-dark">' + esc(n.subtitle) + '</p>' : '') +
+      '<div class="meta"><span class="avatar ini">' + esc(String(author).charAt(0)) + '</span><div><strong>' + esc(author) + '</strong><span>Autor(a)</span></div>' +
+      '<span class="meta-i">' + icon('calendar', 14) + fmtDate(n.date) + '</span><span class="meta-i">' + icon('clock', 14) + mins + ' min de leitura</span></div></div>' +
+      (n.image ? '<div class="wrap article-cover">' + img(n.image, n.title, '', true) + '</div>' : '') +
+      '<div class="wrap narrow"><div class="prose">' + md(n.body) + '</div>' +
+      '<div class="share"><strong>Compartilhe:</strong>' +
+      '<a href="https://wa.me/?text=' + share + '" target="_blank" rel="noopener">' + icon('whatsapp', 18) + '</a>' +
+      '<a href="https://www.facebook.com/sharer/sharer.php?u=' + share + '" target="_blank" rel="noopener">' + icon('facebook', 18) + '</a>' +
+      '<button type="button" class="copy-link">' + icon('cards', 18) + '<span>Copiar link</span></button></div></div></article>' +
+      (related.length ? '<section class="posts"><div class="wrap">' + head({ title: 'Leia também' }) + '<div class="grid g3">' + related.map(function (x) { return newsCard(x); }).join('') + '</div></div></section>' : '');
+  };
+
+  PAGES.notfound = function () {
+    return pageHero('Página não encontrada', 'O conteúdo que você procura não existe ou foi removido.', null) +
+      '<section><div class="wrap center">' + btn('Voltar ao início', './', 'btn-primary', 'arrow') + '</div></section>';
+  };
+
+  /* ---------- estrutura ---------- */
+  function logo() {
+    return D.site.logo ? img(D.site.logo, D.site.name, 'logo-img', true) : '<span class="logo-text">' + rich(D.site.logoText || D.site.name) + '</span>';
+  }
+
+  function header() {
+    var h = D.header || {};
+    return '<header class="topbar' + (P.type === 'home' ? '' : ' solid') + '"><div class="wrap bar' + (list(h.menu).length ? '' : ' no-menu') + '"><a class="logo" href="./">' + logo() + '</a>' +
+      '<nav class="nav" id="nav">' + list(h.menu).map(function (m) { return a(m.url, 'nav-link', esc(m.label)); }).join('') +
+      '<div class="nav-btns">' + btn(h.btn1Label, h.btn1Url, 'btn-sm btn-line', 'headset') + btn(h.btn2Label, h.btn2Url, 'btn-sm btn-primary', 'user') + '</div></nav>' +
+      '<button class="burger" aria-label="Menu" id="burger"><span></span><span></span><span></span></button></div></header>';
+  }
+
+  function footer() {
+    var f = D.footer || {};
+    return '<footer class="foot"><div class="wrap foot-grid"><div><a class="logo" href="./">' + logo() + '</a><p>' + esc(f.text) + '</p>' +
+      '<div class="socials">' + list(f.socials).map(function (x) { return a(x.url, 'social', icon(x.icon, 18)); }).join('') + '</div></div>' +
+      '<nav class="foot-links">' + list(f.links).map(function (l) { return a(l.url, '', esc(l.label)); }).join('') + '</nav></div>' +
+      '<div class="wrap copy">' + esc(f.copyright) + '</div></footer>';
+  }
+
+  function applyTheme() {
+    var t = D.theme || {}, r = document.documentElement.style;
+    document.body.classList.toggle('theme-dark', t.mode === 'escuro');
+    var map = { primary: '--primary', primaryDark: '--primary-2', accent: '--accent', accent2: '--accent-2', dark: '--dark' };
+    Object.keys(map).forEach(function (k) { if (t[k]) r.setProperty(map[k], t[k]); });
+    var font = (t.font || 'Inter').replace(/[^\w ]/g, '');
+    r.setProperty('--font', '"' + font + '", -apple-system, "Segoe UI", Roboto, sans-serif');
+    var link = document.getElementById('gfont');
+    var href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(font).replace(/%20/g, '+') + ':wght@400;500;600;700;800&display=swap';
+    if (link && link.getAttribute('href') !== href) link.setAttribute('href', href);
+  }
+
+  function render(data, page) {
+    D = data;
+    P = page || { type: 'home' };
+    applyTheme();
+    var body = header() + '<main>' + (PAGES[P.type] || PAGES.notfound)() + '</main>' + footer();
+    if (D.site.showWhatsappButton && D.site.whatsapp) body += a('whatsapp', 'wa-float', icon('whatsapp', 28));
+    document.getElementById('app').innerHTML = body;
+    bind();
+  }
+
+  function bind() {
+    var burger = document.getElementById('burger'), nav = document.getElementById('nav');
+    if (burger) burger.onclick = function () { nav.classList.toggle('open'); burger.classList.toggle('x'); };
+    if (nav) nav.addEventListener('click', function (e) { if (e.target.closest('a')) { nav.classList.remove('open'); burger.classList.remove('x'); } });
+    document.querySelectorAll('.filter, .cat-box').forEach(function (bar) {
+      var scope = bar.parentNode;
+      bar.querySelectorAll('[data-f]').forEach(function (c) {
+        c.onclick = function () {
+          bar.querySelectorAll('[data-f]').forEach(function (x) { x.classList.remove('on'); });
+          c.classList.add('on');
+          var f = c.getAttribute('data-f');
+          scope.querySelectorAll('[data-tags]').forEach(function (el) {
+            el.style.display = !f || el.getAttribute('data-tags').split('|').indexOf(f) >= 0 ? '' : 'none';
+          });
+          var main = bar.classList.contains('cat-box') && window.innerWidth <= 860 && scope.querySelector('.courses-main');
+          if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+      });
+    });
+    // carrossel (professores)
+    document.querySelectorAll('.carousel').forEach(function (c) {
+      var tr = c.querySelector('.car-track');
+      function step() { return Math.max(tr.clientWidth * 0.8, 200); }
+      c.querySelector('.prev').onclick = function () { tr.scrollBy({ left: -step(), behavior: 'smooth' }); };
+      c.querySelector('.next').onclick = function () {
+        if (tr.scrollLeft + tr.clientWidth >= tr.scrollWidth - 8) tr.scrollTo({ left: 0, behavior: 'smooth' }); else tr.scrollBy({ left: step(), behavior: 'smooth' });
+      };
+      if (!c.__auto) { c.__auto = setInterval(function () { if (!c.matches(':hover') && document.body.contains(c)) c.querySelector('.next').click(); }, 4500); }
+    });
+    // ampliar prints dos depoimentos
+    document.querySelectorAll('[data-zoom]').forEach(function (b) {
+      b.onclick = function () {
+        var o = document.createElement('div'); o.className = 'lightbox';
+        o.innerHTML = '<img src="' + esc(b.getAttribute('data-zoom')) + '" alt=""><button type="button" aria-label="Fechar">✕</button>';
+        function close() { o.remove(); document.removeEventListener('keydown', key); }
+        function key(e) { if (e.key === 'Escape') close(); }
+        o.onclick = close; document.addEventListener('keydown', key); document.body.appendChild(o);
+      };
+    });
+    var copy = document.querySelector('.copy-link');
+    if (copy) copy.onclick = function () {
+      if (navigator.clipboard) navigator.clipboard.writeText(location.href.replace(/[?&]preview=1/, '')).then(function () { copy.querySelector('span').textContent = 'Link copiado!'; });
+    };
+  }
+
+  window.addEventListener('scroll', function () {
+    var t = document.querySelector('.topbar');
+    if (t) t.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Prévia ao vivo dentro do painel
+  if (/[?&]preview=1/.test(location.search)) {
+    // na prévia, links internos não navegam (evita sair da prévia)
+    document.addEventListener('click', function (e) {
+      var l = e.target.closest('a');
+      if (!l) return;
+      e.preventDefault();
+      var h = l.getAttribute('href') || '', t = /^#./.test(h) && document.getElementById(h.slice(1));
+      if (t) t.scrollIntoView({ behavior: 'smooth' });
+    });
+    window.addEventListener('message', function (e) {
+      if (e.origin !== location.origin || !e.data || e.data.type !== 'site-preview') return;
+      var y = window.scrollY, page = e.data.page || P, same = page.type === P.type && page.slug === P.slug;
+      render(e.data.content, page);
+      if (!same) window.scrollTo(0, 0);
+      else if (e.data.scrollTo) {
+        var el = document.getElementById(e.data.scrollTo) || document.querySelector('.' + e.data.scrollTo);
+        if (el) el.scrollIntoView({ block: 'start' }); else window.scrollTo(0, y);
+      } else window.scrollTo(0, y);
+    });
+    if (window.parent !== window) window.parent.postMessage({ type: 'preview-ready' }, location.origin);
+  }
+
+  window.__render = render;
+})();
+</script>
+<script>
+(function () {
+  function pageFromHash() {
+    var h = decodeURIComponent(location.hash.slice(1)), m;
+    if (h === 'pagina-cursos') return { type: 'courses' };
+    if (h === 'pagina-noticias') return { type: 'news' };
+    if ((m = /^curso-(.+)$/.exec(h))) return { type: 'course', slug: m[1] };
+    if ((m = /^noticia-(.+)$/.exec(h))) return { type: 'article', slug: m[1] };
+    return { type: 'home', anchor: h };
+  }
+  function hashFor(href) {
+    var m;
+    if (href === './' || href === '' || href === '/') return '';
+    if (href === 'cursos') return 'pagina-cursos';
+    if (href === 'noticias') return 'pagina-noticias';
+    if ((m = /^curso\/([a-z0-9-]+)\/?$/.exec(href))) return 'curso-' + m[1];
+    if ((m = /^noticia\/([a-z0-9-]+)\/?$/.exec(href))) return 'noticia-' + m[1];
+    return null;
+  }
+  var current = null;
+  function show() {
+    var p = pageFromHash();
+    var key = p.type + ':' + (p.slug || '');
+    if (key !== current) { window.__render(window.SITE_DATA, p); current = key; window.scrollTo(0, 0); }
+    if (p.anchor) { var el = document.getElementById(p.anchor); if (el) el.scrollIntoView(); }
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (/^(https?:|mailto:|tel:)/i.test(href)) return; // links externos abrem normalmente
+    e.preventDefault();
+    if (href.charAt(0) === '#') {
+      var id = href.slice(1), el = document.getElementById(id);
+      if (el && current === 'home:') el.scrollIntoView({ behavior: 'smooth' });
+      else location.hash = id;
+      return;
+    }
+    var h = hashFor(href);
+    if (h === null) return;
+    if (h === '') { history.replaceState(null, '', location.pathname + location.search); current = null; show(); return; }
+    if (location.hash.slice(1) === h) window.scrollTo(0, 0); else location.hash = h;
+  });
+  window.addEventListener('hashchange', show);
+  show();
+})();</script>
+
+</body>
+</html>
